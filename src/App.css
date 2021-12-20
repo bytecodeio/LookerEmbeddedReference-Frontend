@@ -1,0 +1,70 @@
+.top-banner {
+    height: 60px;
+    box-shadow: 0px 1px 2px #dbdbdb;
+    margin-bottom: 20px;
+    background-color: #e7e7e7;
+}
+
+.embed-dashboard-left {
+    width: 200px;
+    height: 100vh;
+    vertical-align: top;
+    align-self: flex-start;
+    border-right: 1px solid lightgrey;
+    border-image: linear-gradient( to bottom, lightgrey, rgba(0, 0, 0, 0) ) 9 30;
+    transition: width 1s;
+    margin: 4px !important;
+    position: relative;
+    z-index: 1;
+}
+
+.embed-dashboard-left.collapse {
+    width: 50px;
+    transition: width 1s;
+}
+
+.embed-dashboard-main {
+    width: 2040px;
+    vertical-align: top;
+    z-index: 1;
+}
+
+
+.dashboard-nav-items {
+    opacity: 100;
+    transition: opacity 2s;
+    overflow: hidden;
+    overflow-y: auto !important;
+    max-height: 85vh;
+}
+.dashboard-nav-items.collapse {
+    opacity: 0;
+    transition: opacity 0.5s;
+    overflow: hidden;
+}
+
+.custom-button {
+    background-color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    padding: 0;
+}
+
+.custom-button:hover, .custom-button:focus, .custom-button:active{
+    background: #efefef;
+    border-color: #efefef;
+}
+
+.custom-button > svg {
+    fill: var(--primary-color);
+    width: 20px;
+}
+
+.text_main_header {
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
+    text-decoration: underline;
+    font-size: x-large;
+    color:#000;
+}

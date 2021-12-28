@@ -6,10 +6,11 @@
   "author": "Looker Data Sciences, Inc",
   "license": "MIT",
   "dependencies": {
-    "@looker/components": "^0.9.30",
-    "@looker/embed-sdk": "^1.5.1",
-    "@looker/sdk": "^21.0.9",
-    "@looker/sdk-rtl": "^21.0.9",
+    "@looker/components": "2.8.13",
+    "@looker/components-date": "3.0.2",
+    "@looker/embed-sdk": "1.6.1",
+    "@looker/sdk": "21.20.0",
+    "@looker/sdk-rtl": "21.3.1",
     "@styled-icons/material-outlined": "^10.34.0",
     "d3-force": "^2.1.1",
     "d3-scale": "^3.2.3",
@@ -20,23 +21,25 @@
     "lodash": "^4.17.21",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
-    "styled-components": "^4.4.1"
+    "react-is": "16.11",
+    "react-router-dom": "6.2.1",
+    "styled-components": "5.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/plugin-transform-runtime": "^7.12.1",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-react": "^7.10.4",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^5.0.1",
-    "style-loader": "^2.0.0",
-    "webpack": "^4.44.2",
+    "@babel/core": "^7.16.5",
+    "@babel/plugin-transform-runtime": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@babel/preset-react": "^7.16.5",
+    "babel-loader": "^8.2.3",
+    "css-loader": "6.5.1",
+    "style-loader": "3.3.1",
+    "webpack": "5.65.0",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.6.0"
+    "webpack-dev-server": "^4.7.0"
   },
   "scripts": {
-    "build": "webpack --mode development",
-    "dev": "webpack-dev-server --hot --allowed-hosts all"
+    "build": "webpack --mode production",
+    "build-dev": "webpack --mode development",
+    "dev": "webpack-dev-server --hot --https"
   }
 }

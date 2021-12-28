@@ -1,128 +1,57 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import EmbedSDK from './components/EmbedSDK'
-import EmbedWithApi from './components/EmbedWithApi'
-import APIDataContainer from './components/ApiDataBackend'
-import ApiQueryFrontend from './components/ApiQueryFrontend'
-import CorsExample from './components/CorsExample'
-import DashboardExternalFilters from './components/DashboardExternalFilters'
-import D3CustomVis from './components/D3CustomVis'
-import EmbedTwoInstances from './components/EmbedTwoInstances'
-import EmbedExplore from './components/EmbedExplore'
-import DashFilters from './components/DashFilters'
-import Navigation from './components/Navigation/Navigation'
 import './App.css'
-import {Layout, Space} from '@looker/components'
-
+import TopBanner from './components/Navigation/TopBanner'
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+  Routes,
+  Route
 } from "react-router-dom";
 
-import ReactDOMServer from 'react-dom/server'
-import EmbedLookSDK from './components/EmbedLookSDK'
+// import EmbedLookSDK from './components/EmbedLookSDK'
 import { ComponentsProvider } from '@looker/components-providers'
 import Container from './RouteContainer'
 
-const routes = 
-    [
-      {
-        title: "Embed Examples",
-        examples: [
-          {
-            url: '/embed-dashboard',
-            text: 'Dashboard',
-            component:(<EmbedSDK dashboard_id={"data_block_acs_bigquery::acs_census_overview"} />)
-          },
-          // {
-          //   url: '/embed-look',
-          //   text: 'Embed Look',
-          //   component:(<EmbedLookSDK />)
-          // },
-        ]
-      }      
-    ]
-
-
-const params = {
+const routes =
+{
+  title: "Embed Examples",
   examples: [
     {
-      url: '/examples/embed-sdk',
-      text: 'Basic Embed with SDK'
+      url: '/embed-dashboard',
+      text: 'Dashboard',
+      component: (<EmbedSDK dashboard_id="data_block_acs_bigquery::acs_census_overview" />)
     },
-    {
-      text: 'API Data fetched from backend',
-      url: '/examples/api-data-backend'
-    },
-    {
-      text: 'Frontend Data Query',
-      url: '/examples/api-query-frontend'
-    },
-    {
-      text: 'Embed With API Example',
-      url: '/examples/embed-api'
-    },
-    {
-      text: 'Cors',
-      url: '/examples/cors'
-    },
-    {
-      text: 'Embed A Look',
-      url: '/examples/embed-look'
-    },
-    {
-      text: 'Embed A Dashboard with External Page Filters',
-      url: '/examples/embed-dashboard-external-filters'
-    },
-    {
-      text: 'D3.js Custom Vis',
-      url: '/examples/d3-custom-vis'
-    },
-    {
-      text: 'Embed Two',
-      url: '/examples/embed-two'
-    },
-    {
-      text: 'Embed Explore',
-      url: '/examples/embed-explore'
-    },
-    {
-      text: 'Dashboard w External Filters',
-      url: '/examples/dash-filters'
-    }
+    // Uncomment the code below to add an additional route to an embedded Look.
+    // {
+    //   url: '/embed-look',
+    //   text: 'Embed Look',
+    //   component:(<EmbedLookSDK />)
+    // },
   ]
-} 
-
+}
 
 function App() {
+  // This code adds a Components Provider, which allows Looker components to be easily used later
+  // It also adds a top banner, which includes navigation
+  // It switches 'routes' based on the path and renders a 'Container' with the appropriate content
 
   return (
     <ComponentsProvider>
-      <Space className='top-banner'>
-      </Space>
-        <Router>  
-          <Layout hasAside>      
-          <Navigation 
-            routes={routes}
-            />
-          <div>
-            <Switch>
-              {/* <Route path='/' component={SelectExample} exact /> */}
-              {routes.map((r) => {
-                console.log(routes);
-                return (
-                r.examples.map(e => {
-                  return(
-                    <Route path={e.url} component={() => <Container content={e.component} />} />
-                  )                  
-                }))
-              })}
-            </Switch>
-          </div>
-          </Layout>
-        </Router>      
+      <Router>
+        <TopBanner routes={routes} />
+        <Routes>
+          <Route exact path='/' element={< Container content={routes.examples[0].component} />} />
+    
+          {routes.examples.map(e => {
+            return (
+              <Route path={e.url} default element={<Container content={e.component} />} />
+            )
+          })
+          }
+        </Routes>
+      </Router>
     </ComponentsProvider>
   )
 }
+
 export default App

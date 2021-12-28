@@ -1,21 +1,12 @@
-import {
-  useRouteMatch,
-  Switch,
-  Route
-} from "react-router-dom";
-import * as React from 'react'
+// Not yet implemented in the App.js file
+// To use this functionality, add a Route to this content
+
+import React from 'react'
 import Embed from './Embed'
 
-import { ComponentsProvider } from '@looker/components'
-
 const DashFilters = (() => {
-  let match = useRouteMatch();
-  return(
-    <Switch>
-      <ComponentsProvider>
-      <Route path={`${match.url}/`} component={Embed} />
-      </ComponentsProvider>
-    </Switch>
+  return (
+      <Embed />
   )
 })
 

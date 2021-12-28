@@ -1,3 +1,5 @@
+/* These need some serious cleanup. */
+
 .top-banner {
     height: 60px;
     box-shadow: 0px 1px 2px #dbdbdb;
@@ -6,7 +8,7 @@
 }
 
 .embed-dashboard-left {
-    width: 200px;
+    width: 400px;
     height: 100vh;
     vertical-align: top;
     align-self: flex-start;
@@ -24,7 +26,7 @@
 }
 
 .embed-dashboard-main {
-    width: 2040px;
+    width: 100%;
     vertical-align: top;
     z-index: 1;
 }
@@ -66,5 +68,6 @@
     font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
     text-decoration: underline;
     font-size: x-large;
+    padding-left: 4rem;
     color:#000;
 }

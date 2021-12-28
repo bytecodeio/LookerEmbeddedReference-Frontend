@@ -1,6 +1,7 @@
-import * as React from 'react'
+// Not yet implemented in the App.js file
+// To use this functionality, add a Route to this content
 
-import { ComponentsProvider } from '@looker/components'
+import React from 'react'
 
 import ApiQueryFrontendComponent from './ApiQueryFrontend'
 
@@ -8,9 +9,7 @@ import ApiQueryFrontendComponent from './ApiQueryFrontend'
 const ApiQueryFrontend = (() => {
   console.log('ApiQueryFrontend()')
   return(
-    <ComponentsProvider>
         <ApiQueryFrontendComponent />
-    </ComponentsProvider>
   )
 })
 

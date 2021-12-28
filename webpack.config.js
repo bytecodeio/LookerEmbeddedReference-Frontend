@@ -13,17 +13,14 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     // contentBase: path.join(__dirname, 'dist'),
-    static: path.join(__dirname, 'dist'),
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     port: process.env.PBL_DEV_PORT || 3001,
     proxy: {
       '/api': ['http://localhost', process.env.PBL_PORT || '3000'].join(':')
     },
     historyApiFallback: true
-  },
-  node: {
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty'
   },
   module: {
     rules: [

@@ -1,20 +1,12 @@
-import {
-  useRouteMatch,
-  Switch,
-  Route
-} from "react-router-dom";
-import * as React from 'react'
+// Not yet implemented in the App.js file
+// To use this functionality, add a Route to this content
+
+import React from 'react'
 import EmbedApi from './EmbedApi'
-import { ComponentsProvider } from '@looker/components'
 
 const EmbedWithApi = (() => {
-  let match = useRouteMatch();
-  return(
-    <ComponentsProvider>
-      <Switch>
-        <Route path={`${match.url}/`} component={EmbedApi} />
-      </Switch>
-    </ComponentsProvider>
+  return (
+    <EmbedApi />
   )
 })
 

@@ -1,18 +1,14 @@
-import {
-    useRouteMatch,
-    Switch,
-    Route
-  } from "react-router-dom";
-  import * as React from 'react'
-  import DashboardExternalFiltersComponent from './DashboardExternalFiltersComponent'
-  
-  const DashboardExternalFilters = (() => {
-    let match = useRouteMatch();
-    return(
-      <Switch>
-        <Route path={`${match.url}/`} component={DashboardExternalFiltersComponent} />
-      </Switch>
-    )
-  })
-  
-  export default DashboardExternalFilters
+// Not yet implemented in the App.js file
+// To use this functionality, add a Route to this content
+
+import React from 'react'
+import DashboardExternalFiltersComponent from './DashboardExternalFiltersComponent'
+
+const DashboardExternalFilters = (() => {
+  return (
+    <DashboardExternalFiltersComponent />
+
+  )
+})
+
+export default DashboardExternalFilters

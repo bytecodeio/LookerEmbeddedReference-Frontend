@@ -51,7 +51,7 @@ const Embed = (props) => {
   return (
     <Space>
       <div className={"embed-dashboard-main"}>
-        <div className={"text_main_header"}>Embedded Dashboard</div>
+        <PageTitle >Embedded Dashboard </PageTitle>
         { /* Step 0) we have a simple container, which performs a callback to our makeDashboard function */}
         <Dashboard ref={makeDashboard}></Dashboard>
       </div>
@@ -66,6 +66,15 @@ const Dashboard = styled.div`
   & > iframe {
     width: 100%;
     height: 100%;
+  }
+`
+
+const PageTitle = styled.div`
+  font-family: "Google Sans", "Open Sans", Arial, Helvetica, sans-serif;
+  font-size: 26px;
+  color: #5F6368;
+  font-weight: 200;
+  margin-left: 3rem;
   }
 `
 export default Embed

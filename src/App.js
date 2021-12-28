@@ -18,7 +18,7 @@ const routes =
   examples: [
     {
       url: '/embed-dashboard',
-      text: 'Dashboard',
+      text: 'Embedded Dashboard',
       component: (<EmbedSDK dashboard_id="data_block_acs_bigquery::acs_census_overview" />)
     },
     // Uncomment the code below to add an additional route to an embedded Look.

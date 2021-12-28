@@ -63,11 +63,3 @@
     fill: var(--primary-color);
     width: 20px;
 }
-
-.text_main_header {
-    font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
-    text-decoration: underline;
-    font-size: x-large;
-    padding-left: 4rem;
-    color:#000;
-}

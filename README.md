@@ -1,6 +1,6 @@
 
 
-# Looker Embedded Reference - Frontend 
+# Looker Embed Reference - Frontend 
 
  Example of embedded Looker components.
  
@@ -14,9 +14,9 @@ yarn install
 ```
 You may need to update your Node version or use a Node version manager to change your Node version.
   
-#### Environmental varaibles
+#### Environmental variables
 
-These can be set in an .env file or in the envornment directly using export envir_var=value, etc.
+These can be set in an .env file or in the environment directly using export envir_var=value, etc.
 
 ```
 PBL_PORT=3001  # Note different port from backend 

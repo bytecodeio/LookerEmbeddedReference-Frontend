@@ -7,11 +7,11 @@ import { Space } from '@looker/components'
 import styled from "styled-components"
 import { MenuButton } from './MenuButton'
 
-function TopBanner({routes}) {
+function TopBanner({setMenuToggle,menuToggle}) {
     return (
         <>
             <Space className='top-banner' paddingLeft="20px">
-                <MenuButton routes={routes} />
+                <MenuButton setMenuToggle={setMenuToggle} menuToggle={menuToggle} />
                 <Image src="https://looker.com/assets/img/images/logos/looker.svg" alt="Looker" />
                 <Header>
                     Embedded Reference Application

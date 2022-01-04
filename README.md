@@ -1,30 +1,60 @@
-
-
 # Looker Embed Reference - Frontend 
 
- Example of embedded Looker components.
- 
-## Installation
-* Clone or download a copy of this template to your development machine.
-* Navigate (cd) to the template directory on your system.
-* Install the dependencies with Yarn.
+ This application contains examples of embedding Looker.  It is a React application that uses the Looker [Embed SDK](https://docs.looker.com/reference/embed-sdk/embed-sdk-intro) and [Components](https://docs.looker.com/data-modeling/extension-framework/components). It requires running a [backend application](https://github.com/bytecodeio/LookerEmbeddedReference-Backend) to handle API calls safely.  These applications are tighly coupled.
+
+## About Embedding Looker
+
+### Basics
+The frontend server (from this repository) serves a web site.  It relies on a [backend server](ttps://github.com/bytecodeio/LookerEmbeddedReference-Backend) to communicate securely with Looker.  When a user needs Looker content, the frontend server requests a *Signed SSO URL* from the backend server.  This URL is then added to an iframe on the site. 
+
+### Details
+The frontend server will handle user authentication, navigation, and rendering everything except Looker content.  An iframe is an inline frame element (iframe) that the frontend uses to set space aside for Looker content.  Within the iframe, Looker renders and controls the content.  To investigate where these pieces are defined in the code, investigate these files:
+
+* TBD
+* TBD
+* TBD
+
+## Looker Setup
+
+By default, Looker won't have the necessary dashboards to display embedded content.  We can add a dashboard and data from a public Looker block.
+
+### Install Looker Data Block
+1. Create a [GCP account](https://console.cloud.google.com/getting-started), if you don't already have one.
+2. Create a connection to BigQuery, [create a new one](https://docs.looker.com/setup-and-management/database-config/google-bigquery) 
+   - It can use any schema, even the public_datasets schema
+   - You must [create a schema for derived tables](https://docs.looker.com/setup-and-management/database-config/google-bigquery#creating_a_temporary_dataset_for_persistent_derived_tables) in BigQuery
+   - Enable Persistent Derived Tables when configuring the connection
+3. [Install the Census Data Block](https://docs.looker.com/data-modeling/looker-blocks#data_blocks) via the marketplace in your looker instance
+   - When prompted, choose to install using the BigQuery conection from step 2
+
+# Installation
+Before using the frontend server, you'll need to install it.
+
+* Clone or download a copy of this repository to your local machine.
+* Navigate (cd) to the directory on your system.
+* Install the dependencies with Yarn:
 
 ```
 yarn install
 ```
 You may need to update your Node version or use a Node version manager to change your Node version.
   
-#### Environmental variables
+## Environmental variables
 
-These can be set in an .env file or in the environment directly using export envir_var=value, etc.
+These can be set in a .env file in the root project directory.  In production systems, they are often set in the environment directly using `export PBL_PORT=3001`, or similar OS-specific commands.
 
 ```
 PBL_PORT=3001  # Note different port from backend 
 API_HOST=http://localhost:3000
 LOOKER_HOST=https://bytecodeef.looker.com
 LOOKER_API_HOST=https://bytecodeef.looker.com:19999
-LOOKERSDK_EMBED_HOST=https://example.looker.com
+LOOKERSDK_EMBED_HOST=https://example.looker.com   
 ```
+For most installations, the LOOKER_HOST will be the same as the LOOKERSDK_EMBED_HOST variable. The LOOKER_API_HOST is usually the same, but with port 19999.
+
+## Running Locally
+
+Local hosting is recommended for learning and development.
 
 ### Start the dev server
 
@@ -32,12 +62,19 @@ LOOKERSDK_EMBED_HOST=https://example.looker.com
 yarn dev 
 ```
 
+### Start the backend API server
+
+Follow directions in [the backend repository readme](https://github.com/bytecodeio/LookerEmbeddedReference-Backend#installation) to install, compile and run it.
+
 ### Point a browser to:
 ```
-http://localhost:3001/embed-dashboard  # Update PORT 3001 to Environmental variable set with PBL_PORT if different
+http://localhost:3001/embed-dashboard  # Update PORT 3001 to environmental variable set with PBL_PORT if different
 ``` 
 
-## Documentation
+## Running in Google AppEngine
+
+Instead of running this locally, use Google AppEngine to run it in the cloud 
+Follow the directions in [the backend repository README](https://github.com/bytecodeio/LookerEmbeddedReference-Backend#google-appengine-installation)
 
 
 ### Other resources:

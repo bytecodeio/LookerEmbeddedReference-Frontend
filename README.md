@@ -76,9 +76,9 @@ yarn dev
 Follow directions in [the backend repository readme](https://github.com/bytecodeio/LookerEmbeddedReference-Backend#installation) to install, compile and run it.
 
 ### Point a browser to:
-```
-http://localhost:3001/embed-dashboard  # Update PORT 3001 to environmental variable set with PBL_PORT if different
-``` 
+
+[http://localhost:3001/embed-dashboard](http://localhost:3001/embed-dashboard)  
+Change the port from 3001 if you set a different PBL_PORT
 
 ## Running in Google AppEngine
 

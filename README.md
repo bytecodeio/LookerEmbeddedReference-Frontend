@@ -5,14 +5,15 @@
 ## About Embedding Looker
 
 ### Basics
-The frontend server (from this repository) serves a web site.  It relies on a [backend server](ttps://github.com/bytecodeio/LookerEmbeddedReference-Backend) to communicate securely with Looker.  When a user needs Looker content, the frontend server requests a *Signed SSO URL* from the backend server.  This URL is then added to an iframe on the site. 
+The frontend server (from this repository) serves a web site.  It relies on a [backend server](https://github.com/bytecodeio/LookerEmbeddedReference-Backend) to communicate securely with Looker.  When a user needs Looker content, the frontend server requests a *Signed SSO URL* from the backend server.  This URL is then added to an iframe on the site. 
 
 ### Details
-The frontend server will handle user authentication, navigation, and rendering everything except Looker content.  An iframe is an inline frame element (iframe) that the frontend uses to set space aside for Looker content.  Within the iframe, Looker renders and controls the content.  To investigate where these pieces are defined in the code, investigate these files:
+The frontend server will handle user authentication, navigation, and rendering everything except Looker content.  The frontend uses an iframe (inline frame element) to set space aside for Looker content.  Within the iframe, Looker renders and controls the content.  To investigate where these pieces are defined in the code, investigate these files:
 
-* TBD
-* TBD
-* TBD
+* html entry point(TBD)
+* menu (TBD)
+* routing (TBD)
+* dashboard embedding (TBD)
 
 ## Looker Setup
 
@@ -26,18 +27,27 @@ By default, Looker won't have the necessary dashboards to display embedded conte
    - Enable Persistent Derived Tables when configuring the connection
 3. [Install the Census Data Block](https://docs.looker.com/data-modeling/looker-blocks#data_blocks) via the marketplace in your looker instance
    - When prompted, choose to install using the BigQuery conection from step 2
+   - If it is successfully installed, you can view the dashboard in Looker with the context `/embed/dashboards/data_block_acs_bigquery::acs_census_overview`
 
 # Installation
 Before using the frontend server, you'll need to install it.
 
-* Clone or download a copy of this repository to your local machine.
+## Prerequisites
+* [Install git](https://git-scm.com/downloads)
+* [Install node](https://nodejs.org/en/download/)
+* [Install npm](https://docs.npmjs.com/cli/v7/configuring-npm/install)
+* [Install yarn](https://classic.yarnpkg.com/lang/en/docs/install)
+
+* Clone or download a copy of this repository to your local machine:
+```
+git clone git@github.com:bytecodeio/LookerEmbeddedReference-Frontend.git
+```
+
 * Navigate (cd) to the directory on your system.
 * Install the dependencies with Yarn:
-
 ```
 yarn install
 ```
-You may need to update your Node version or use a Node version manager to change your Node version.
   
 ## Environmental variables
 
@@ -57,7 +67,6 @@ For most installations, the LOOKER_HOST will be the same as the LOOKERSDK_EMBED_
 Local hosting is recommended for learning and development.
 
 ### Start the dev server
-
 ```
 yarn dev 
 ```

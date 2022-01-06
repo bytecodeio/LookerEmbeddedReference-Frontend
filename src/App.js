@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import EmbedSDK from './components/EmbedSDK'
+import EmbedExplore from './components/EmbedExplore'
 import './App.css'
 import TopBanner from './components/Navigation/TopBanner'
 import {
@@ -23,6 +24,11 @@ const routes =
       url: '/embed-dashboard',
       text: 'Embedded Dashboard',
       component: (<EmbedSDK dashboard_id="data_block_acs_bigquery::acs_census_overview" />)
+    },
+    {
+      url: '/embed-explore',
+      text: 'Embedded Explore',
+      component: (<EmbedExplore exploreId="data_block_acs_bigquery/acs_census_data" />)
     },
     // Uncomment the code below to add an additional route to an embedded Look.
     // {

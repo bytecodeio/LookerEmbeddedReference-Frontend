@@ -18,7 +18,6 @@
 }
 
 .navigation {
-    height: 100vh;
     vertical-align: top;
     align-self: flex-start;
     position: relative;
@@ -98,4 +97,9 @@ a.active > .nav-item {
 .nav-list > li > a {
     text-decoration: none;
     color: inherit;
+}
+
+.main-container {
+    width: 95%;
+    margin: auto !important;
 }

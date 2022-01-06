@@ -2,7 +2,7 @@ import React, {ReactNode} from 'react'
 
 export default function Container({content}) {
     return(
-        <div>
+        <div className='main-container'>
             {content}
         </div>
     )

@@ -1,19 +1,20 @@
 # Looker Embed Reference - Frontend 
 
- This application contains examples of embedding Looker.  It is a React application that uses the Looker [Embed SDK](https://docs.looker.com/reference/embed-sdk/embed-sdk-intro) and [Components](https://docs.looker.com/data-modeling/extension-framework/components). It requires running a [backend application](https://github.com/bytecodeio/LookerEmbeddedReference-Backend) to handle API calls safely.  These applications are tighly coupled.
+ This application contains examples of embedding Looker.  It is a React application that uses the Looker [Embed SDK](https://docs.looker.com/reference/embed-sdk/embed-sdk-intro) and [Components](https://docs.looker.com/data-modeling/extension-framework/components). It requires running a [backend application](https://github.com/bytecodeio/LookerEmbeddedReference-Backend) to handle API calls safely.  These applications are tightly coupled.
 
 ## About Embedding Looker
 
 ### Basics
-The frontend server (from this repository) serves a web site.  It relies on a [backend server](https://github.com/bytecodeio/LookerEmbeddedReference-Backend) to communicate securely with Looker.  When a user needs Looker content, the frontend server requests a *Signed SSO URL* from the backend server.  This URL is then added to an iframe on the site. 
+The frontend server (from this repository) serves a web site.  It relies on a [backend server](https://github.com/bytecodeio/LookerEmbeddedReference-Backend) to communicate securely with Looker.  When a user needs Looker content, the frontend server requests a [Signed SSO URL](https://docs.looker.com/reference/embedding/sso-embed) from the backend server.  This URL is then added to an iframe on the site. 
 
 ### Details
 The frontend server will handle user authentication, navigation, and rendering everything except Looker content.  The frontend uses an iframe (inline frame element) to set space aside for Looker content.  Within the iframe, Looker renders and controls the content.  To investigate where these pieces are defined in the code, investigate these files:
 
-* html entry point(TBD)
-* menu (TBD)
-* routing (TBD)
-* dashboard embedding (TBD)
+* html entry point (*src/index.js*)
+* menu (*src/App.js*)
+* routing (*src/App.js*)
+* dashboard embedding (*src/components/EmbedSDK*)
+* explore embedding (*src/components/EmbedExplore*)
 
 ## Looker Setup
 
@@ -26,7 +27,7 @@ By default, Looker won't have the necessary dashboards to display embedded conte
    - You must [create a schema for derived tables](https://docs.looker.com/setup-and-management/database-config/google-bigquery#creating_a_temporary_dataset_for_persistent_derived_tables) in BigQuery
    - Enable Persistent Derived Tables when configuring the connection
 3. [Install the Census Data Block](https://docs.looker.com/data-modeling/looker-blocks#data_blocks) via the marketplace in your looker instance
-   - When prompted, choose to install using the BigQuery conection from step 2
+   - When prompted, choose to install using the BigQuery connection from step 2
    - If it is successfully installed, you can view the dashboard in Looker with the context `/embed/dashboards/data_block_acs_bigquery::acs_census_overview`
 
 # Installation
@@ -82,7 +83,7 @@ Change the port from 3001 if you set a different PBL_PORT
 
 ## Running in Google AppEngine
 
-Instead of running this locally, use Google AppEngine to run it in the cloud 
+Instead of running this locally, use Google AppEngine to run it in the cloud.
 Follow the directions in [the backend repository README](https://github.com/bytecodeio/LookerEmbeddedReference-Backend#google-appengine-installation)
 
 

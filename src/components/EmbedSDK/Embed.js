@@ -1,4 +1,6 @@
-// This is where the magic happens to embed a dashboard.
+
+// Embedded dashboards let you build an interactive and highly curated data experience within your application
+// This file is used to embed a dashboard using LookerEmbedSDK with EmbedBuilder to initialize your connection and help create the iframe element
 
 import React, { useCallback } from 'react'
 import styled from "styled-components"
@@ -62,7 +64,7 @@ const Embed = (props) => {
 // A little bit of style here for heights and widths.
 const Dashboard = styled.div`
   width: 100%;
-  height: 95vh;
+  height: 85vh;
   & > iframe {
     width: 100%;
     height: 100%;

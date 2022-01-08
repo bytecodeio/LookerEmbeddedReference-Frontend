@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import EmbedSDK from './components/EmbedSDK'
 import EmbedExplore from './components/EmbedExplore'
+import VizComponent from './components/VizComponent'
 import './App.css'
 import TopBanner from './components/Navigation/TopBanner'
 import {
@@ -29,6 +30,11 @@ const routes =
       url: '/embed-explore',
       text: 'Embedded Explore',
       component: (<EmbedExplore exploreId="data_block_acs_bigquery/acs_census_data" />)
+    },
+    {
+      url: '/viz-component',
+      text: 'Visualization Component',
+      component: (<VizComponent queryNumber="5742" />)
     },
     // Uncomment the code below to add an additional route to an embedded Look.
     // {

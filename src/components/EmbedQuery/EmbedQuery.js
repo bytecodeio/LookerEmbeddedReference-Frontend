@@ -7,25 +7,22 @@ import styled from "styled-components"
 import { LookerEmbedSDK } from '@looker/embed-sdk'
 import { Space } from '@looker/components'
 
-const Embed = () => {
+const EmbedQuery = () => {
   /*
    Step 1 Initialization of the EmbedSDK happens when the user first access the application
    See App.js for reference
   */
+  const hostUrl = process.env.LOOKERSDK_EMBED_HOST
 
-  const makeDashboard = useCallback((el) => {
+  const showVisualization = useCallback((el) => {
     if (el) {
       el.innerHTML = ''
       /*
         Step 2 Create your dashboard (or other piece of embedded content) through a simple set of chained methods
       */
-      LookerEmbedSDK.createDashboardWithId("data_block_acs_bigquery::acs_census_overview")
+        LookerEmbedSDK.createExploreWithUrl(`${hostUrl}/embed/query/data_block_acs_bigquery/acs_census_data?qid=ZmNZZBUZUOjTI8PZudiXCT&sdk=2&embed_domain=${hostUrl}&sandboxed_host=true`)
         // adds the iframe to the DOM as a child of a specific element
-        .appendTo(el)
-        // this instructs the SDK to point to the /dashboards-next/ version
-        .withNext()
-        // the .on() method allows us to listen for and respond to events inside the iframe. See here for a list of events: https://docs.looker.com/reference/embedding/embed-javascript-events
-        .on('dashboard:loaded', (e) => { alert('Successfully Loaded!') })
+        .appendTo(el)        
         // this line performs the call to the auth service to get the iframe's src='' url, places it in the iframe and the client performs the request to Looker
         .build()
         // this establishes event communication between the iframe and parent page
@@ -41,16 +38,16 @@ const Embed = () => {
   return (
     <Space>
       <div className={"embed-dashboard-main"}>
-        <PageTitle >Embedded Dashboard </PageTitle>
-        { /* Step 0) we have a simple container, which performs a callback to our makeDashboard function */}
-        <Dashboard ref={makeDashboard}></Dashboard>
+        <PageTitle >Embedded Query</PageTitle>
+        { /* Step 0 we have a simple container, which performs a callback to our showVisualization function */}
+        <Query ref={showVisualization}></Query>
       </div>
     </Space>
   )
 }
 
 // A little bit of style here for heights and widths.
-const Dashboard = styled.div`
+const Query = styled.div`
   width: 100%;
   height: 85vh;
   & > iframe {
@@ -67,4 +64,4 @@ const PageTitle = styled.div`
   margin-left: 3rem;
   }
 `
-export default Embed
+export default EmbedQuery

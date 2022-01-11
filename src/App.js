@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import EmbedSDK from './components/EmbedSDK'
 import EmbedExplore from './components/EmbedExplore'
 import VizComponent from './components/VizComponent'
+import EmbedQuery from './components/EmbedQuery'
 import './App.css'
 import TopBanner from './components/Navigation/TopBanner'
 import {
@@ -16,6 +17,7 @@ import { ComponentsProvider } from '@looker/components-providers'
 import Container from './RouteContainer'
 import { Layout,Box, Space } from '@looker/components';
 import { NavigationMenu } from './components/Navigation/NavigationMenu';
+import { EmbedSDKInit } from './components/common/EmbedInit'
 
 const routes =
 {
@@ -24,12 +26,17 @@ const routes =
     {
       url: '/embed-dashboard',
       text: 'Embedded Dashboard',
-      component: (<EmbedSDK dashboard_id="data_block_acs_bigquery::acs_census_overview" />)
+      component: (<EmbedSDK />)
     },
     {
       url: '/embed-explore',
       text: 'Embedded Explore',
-      component: (<EmbedExplore exploreId="data_block_acs_bigquery/acs_census_data" />)
+      component: (<EmbedExplore />)
+    },
+    {
+      url: '/embed-query',
+      text: 'Embedded Query',
+      component: (<EmbedQuery />)
     },
     {
       url: '/viz-component',
@@ -48,10 +55,15 @@ const routes =
 function App() {
 
   const [menuToggle, setMenuToggle] = React.useState(true)
-  const [currentRoute, setCurrentRoute] = React.useState()
   // This code adds a Components Provider, which allows Looker components to be easily used later
   // It also adds a top banner, which includes navigation
   // It switches 'routes' based on the path and renders a 'Container' with the appropriate content
+
+  /* 
+    Calls EmbedSDK init() pointing the SDK to a looker host, a service to get the iframe URLs from, and passing user identifying information in the header
+    no call to the auth service is made at this step
+  */
+  EmbedSDKInit();
 
 
   return (

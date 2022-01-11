@@ -11,24 +11,15 @@ import { LookerEmbedSDK } from '@looker/embed-sdk'
 
 
 const EmbedExplore = () => {
+    /*
+   Step 1 Initialization of the EmbedSDK happens when the user first access the application
+   See App.js for reference
+  */
   const createExplore = useCallback((el) => {
     if (el) {
       el.innerHTML = ''
-    /* 
-      Step 1 - call init() pointing the SDK to a looker host, a service to get the iframe URLs from, and passing user identifying information in the header
-      no call to the auth service is made at this step
-    */
-    LookerEmbedSDK.init(
-      process.env.LOOKERSDK_EMBED_HOST, 
-      { 
-        // The location of the service which will privately create a signed URL
-        url: '/api/auth' ,
-        // include some factor which your auth service can use to uniquely identify a user, so that a user specific url can be returned. This could be a token or ID
-        headers: [{ name: 'usertoken', value: 'user1' } ]}
-      )
-
     /*
-      Step 2 - Create your Explore through a simple set of chained methods
+      Step 2 Create your Explore through a simple set of chained methods
     */
     LookerEmbedSDK.createExploreWithId("data_block_acs_bigquery/acs_census_data")
     // adds the iframe to the DOM as a child of a specific element
@@ -46,7 +37,7 @@ const EmbedExplore = () => {
     <>
       <div className='stuff' style={{width: '100%', height: '100%'}}>
         <PageTitle>Embedded Explore</PageTitle>
-        { /* Step 0 - we have a simple container, which performs a callback to our createExplore function */}
+        { /* Step 0 we have a simple container, which performs a callback to our createExplore function */}
         <Explore ref={createExplore}></Explore>
       </div>
     </>

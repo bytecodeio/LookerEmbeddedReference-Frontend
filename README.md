@@ -15,6 +15,7 @@ The frontend server will handle user authentication, navigation, and rendering e
 * routing (*src/App.js*)
 * dashboard embedding (*src/components/EmbedSDK*)
 * explore embedding (*src/components/EmbedExplore*)
+* query embedding (*src/components/EmbedQuery*)
 
 ## Looker Setup
 

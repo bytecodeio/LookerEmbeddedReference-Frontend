@@ -1,80 +1,47 @@
-// This is where the magic happens to embed a dashboard.
+/* This displays a visualization from the Visualization Components library.
+ This only supports a limited number of visualization types. Find them here:
+ https://docs.looker.com/data-modeling/extension-framework/vis-components
+ It renders much faster than an Iframe embed!
 
-import React, { useCallback } from 'react'
-import styled from "styled-components"
-import { LookerEmbedSDK } from '@looker/embed-sdk'
-import { Space } from '@looker/components'
+ This example includes a query picker, where it allows the user to choose a query. 
 
+ The minimal example for a visualization component is just: 
+  <Query sdk={sdk} query={123}>
+    <Visualization>
+  </Query
+*/
+
+import React, { useState } from 'react'
+import { sdk } from "../../helpers/CorsSessionHelper"
+import { Query, Visualization, QueryFormatter } from '@looker/visualizations'
+import { Button, InputText, Space, SpaceVertical } from '@looker/components'
+import { Settings } from '@styled-icons/material-outlined'
 const EmbedComponent = (props) => {
+  // Add 2 variables to state, so that the user controls when the input is complete
+  const [queryId, updateQueryId] = useState()
+  const [confirmedId, confirm] = useState(props.queryNumber)
 
-  const makeDashboard = useCallback((el) => {
-    if (el) {
-      el.innerHTML = ''
-      /* 
-        Step 1) call init() pointing the SDK to a looker host, a service to get the iframe URLs from, and passing user identifying information in the header
-        no call to the auth service is made at this step
-      */
-      console.log("props.dashboard_id : ", props.dashboard_id);
-      LookerEmbedSDK.init(
-        process.env.LOOKERSDK_EMBED_HOST,
-        {
-          // The location of the service which will privately create a signed URL
-          url: '/api/auth'
-          , headers: [
-            // include some factor which your auth service can use to uniquely identify a user, so that a user specific url can be returned. This could be a token or ID
-            { name: 'usertoken', value: 'user1' }
-          ]
-        }
-      )
-      /*
-        Step 2 Create your dashboard (or other piece of embedded content) through a simple set of chained methods
-      */
-      LookerEmbedSDK.createDashboardWithId("data_block_acs_bigquery::acs_census_overview")
-        // adds the iframe to the DOM as a child of a specific element
-        .appendTo(el)
-        // this instructs the SDK to point to the /dashboards-next/ version
-        .withNext()
-        // the .on() method allows us to listen for and respond to events inside the iframe. See here for a list of events: https://docs.looker.com/reference/embedding/embed-javascript-events
-        .on('dashboard:loaded', (e) => { alert('Successfully Loaded!') })
-        // this line performs the call to the auth service to get the iframe's src='' url, places it in the iframe and the client performs the request to Looker
-        .build()
-        // this establishes event communication between the iframe and parent page
-        .connect()
-        // catch various errors which can occur in the process (note: does not catch 404 on content)
-        .catch((error) => {
-          console.error('An unexpected error occurred', error)
-        })
-    }
-  }, [])
-
+  // Add two helper functions to handle the state updates
+  const updateFromInput = (event) => { updateQueryId(event.currentTarget.value) }
+  const confirmId = () => confirm(queryId)
 
   return (
-    <Space>
-      <div className={"embed-dashboard-main"}>
-        <PageTitle >Embedded Dashboard </PageTitle>
-        { /* Step 0) we have a simple container, which performs a callback to our makeDashboard function */}
-        <Dashboard ref={makeDashboard}></Dashboard>
-      </div>
-    </Space>
+    <SpaceVertical>
+      <Space><InputText
+        autoResize
+        name="queryIdorSlug"
+        placeholder="Query ID or Slug"
+        iconBefore={<Settings />}
+        onChange={updateFromInput}
+      />
+        <Button onClick={confirmId}>Go</Button>
+        <Link href={`${process.env.LOOKER_API_HOST}/admin/queries`}>Look up Query ID</Link>
+      </Space>
+      <Query sdk={sdk} query={confirmedId}>
+        <Visualization />
+      </Query>
+    </SpaceVertical>
   )
 }
 
-// A little bit of style here for heights and widths.
-const Dashboard = styled.div`
-  width: 100%;
-  height: 95vh;
-  & > iframe {
-    width: 100%;
-    height: 100%;
-  }
-`
-
-const PageTitle = styled.div`
-  font-family: "Google Sans", "Open Sans", Arial, Helvetica, sans-serif;
-  font-size: 26px;
-  color: #5F6368;
-  font-weight: 200;
-  margin-left: 3rem;
-  }
-`
 export default EmbedComponent

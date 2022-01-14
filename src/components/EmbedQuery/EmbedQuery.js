@@ -1,6 +1,6 @@
 
-// Embedded dashboards let you build an interactive and highly curated data experience within your application
-// This file is used to embed a dashboard using LookerEmbedSDK with EmbedBuilder to initialize your connection and help create the iframe element
+// This file is used to embed a Query using LookerEmbedSDK with EmbedBuilder to initialize your connection and help create the iframe element
+// An embedded Query focuses on a single visualization, providing flexibility to build on a single tile of a dashboard.
 
 import React, { useCallback } from 'react'
 import styled from "styled-components"
@@ -18,11 +18,16 @@ const EmbedQuery = () => {
     if (el) {
       el.innerHTML = ''
       /*
-        Step 2 Create your dashboard (or other piece of embedded content) through a simple set of chained methods
+        Step 2 Create your query visualization (or other piece of embedded content) through a simple set of chained methods
+          - An embedded query is built by creating an explore with url, and passing in this special pattern:
+             /embed/query/<<model>>/<<explore>>?qid=<<qid>> (the qid could be obtained from the API. This is the pattern used in this example)
+          - OR the "expanded share url" giving you the ability to affect the vis config or really any attribute of the vis
+             /embed/query/<<model>>/<<explore>>?fields=<<my field list with a new field>>&sorts=<<>> limit .... &vis_config=<<my vis config with a different vis type>>.....
+          - Just also make sure to append &sdk=2&embed_domain=<<hostUrl>>&sandboxed_host=true to the end of the url too.
       */
-        LookerEmbedSDK.createExploreWithUrl(`${hostUrl}/embed/query/data_block_acs_bigquery/acs_census_data?qid=ZmNZZBUZUOjTI8PZudiXCT&sdk=2&embed_domain=${hostUrl}&sandboxed_host=true`)
+      LookerEmbedSDK.createExploreWithUrl(`${hostUrl}/embed/query/data_block_acs_bigquery/acs_census_data?qid=ZmNZZBUZUOjTI8PZudiXCT&sdk=2&embed_domain=${hostUrl}&sandboxed_host=true`)
         // adds the iframe to the DOM as a child of a specific element
-        .appendTo(el)        
+        .appendTo(el)
         // this line performs the call to the auth service to get the iframe's src='' url, places it in the iframe and the client performs the request to Looker
         .build()
         // this establishes event communication between the iframe and parent page

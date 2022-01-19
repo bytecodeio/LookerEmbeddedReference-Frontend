@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import EmbedSDK from './components/EmbedSDK'
+import EmbedDashboard from './components/EmbedDashboard'
 import EmbedExplore from './components/EmbedExplore'
 import VizComponent from './components/VizComponent'
 import EmbedQuery from './components/EmbedQuery'
@@ -26,7 +26,7 @@ const routes =
     {
       url: '/embed-dashboard',
       text: 'Embedded Dashboard',
-      component: (<EmbedSDK />)
+      component: (<EmbedDashboard />)
     },
     {
       url: '/embed-explore',
@@ -37,11 +37,6 @@ const routes =
       url: '/embed-query',
       text: 'Embedded Query',
       component: (<EmbedQuery />)
-    },
-    {
-      url: '/viz-component',
-      text: 'Visualization Component',
-      component: (<VizComponent queryNumber="5742" />)
     },
     // Uncomment the code below to add an additional route to an embedded Look.
     // {

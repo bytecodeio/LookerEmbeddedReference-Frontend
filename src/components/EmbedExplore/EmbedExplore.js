@@ -16,8 +16,10 @@ const EmbedExplore = () => {
    See App.js for reference
   */
   const createExplore = useCallback((el) => {
-    if (el) {
-      el.innerHTML = ''
+    if (!el) {
+      return
+    }
+    el.innerHTML = ''
     /*
       Step 2 Create your Explore through a simple set of chained methods
     */
@@ -32,7 +34,7 @@ const EmbedExplore = () => {
     .catch((error) => {
       console.error('An unexpected error occurred', error)
     })
-  }},[])
+  },[])
   return (
     <>
       <div className='stuff' style={{width: '100%', height: '100%'}}>

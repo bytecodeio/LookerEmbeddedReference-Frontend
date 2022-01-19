@@ -15,8 +15,10 @@ const EmbedQuery = () => {
   const hostUrl = process.env.LOOKERSDK_EMBED_HOST
 
   const showVisualization = useCallback((el) => {
-    if (el) {
-      el.innerHTML = ''
+    if (!el) {
+      return
+    }
+    el.innerHTML = ''
       /*
         Step 2 Create your query visualization (or other piece of embedded content) through a simple set of chained methods
           - An embedded query is built by creating an explore with url, and passing in this special pattern:
@@ -37,7 +39,7 @@ const EmbedQuery = () => {
           console.error('An unexpected error occurred', error)
         })
     }
-  }, [])
+  )
 
 
   return (

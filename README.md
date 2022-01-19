@@ -2,13 +2,17 @@
 
  This application contains examples of embedding Looker.  It is a React application that uses the Looker [Embed SDK](https://docs.looker.com/reference/embed-sdk/embed-sdk-intro) and [Components](https://docs.looker.com/data-modeling/extension-framework/components). It requires running a [backend application](https://github.com/bytecodeio/LookerEmbeddedReference-Backend) to handle API calls safely.  These applications are tightly coupled.
 
+ This is intended to be an example application, and shows many different ways of embedding Looker in another site.  It demonstrates several similar ways to inclue a dashboard or visualization, and all of these techniques are valid.  The examples that this application uses come from a 'data block' provided by Looker, using a public data set.  
+
 ## About Embedding Looker
 
+Embedding Looker into a site can involve showing Looker content directly, and/or using the Looker API to interact with Looker.  An embedding website requires hosting, and usually requires a user login.  For companies who don't yet have non-public websites, consider the [Looker Extension Framework](https://cloud.google.com/blog/topics/developers-practitioners/building-looker-made-easier-extension-framework) instead of creating a new website.
+
 ### Basics
-The frontend server (from this repository) serves a web site.  It relies on a [backend server](https://github.com/bytecodeio/LookerEmbeddedReference-Backend) to communicate securely with Looker.  When a user needs Looker content, the frontend server requests a [Signed SSO URL](https://docs.looker.com/reference/embedding/sso-embed) from the backend server.  This URL is then added to an iframe on the site. 
+The frontend server (from this repository) serves a static web site.  It relies on a [backend server](https://github.com/bytecodeio/LookerEmbeddedReference-Backend) to communicate securely with Looker.  To show Looker Dashboards or Looks, the frontend server requests a [Signed SSO URL](https://docs.looker.com/reference/embedding/sso-embed) from the backend server.  This URL is then added to an iframe on the site.  Inside the iframe, the dashbaord or Look is served directly from the Looker server. 
 
 ### Details
-The frontend server will handle user authentication, navigation, and rendering everything except Looker content.  The frontend uses an iframe (inline frame element) to set space aside for Looker content.  Within the iframe, Looker renders and controls the content.  To investigate where these pieces are defined in the code, investigate these files:
+The frontend server will handle user authentication, navigation, and rendering everything except Looker content.  In most cases, the frontend uses an iframe (inline frame element) to set space aside for Looker content.  Within the iframe, Looker renders and controls the content.  To investigate where these pieces are defined in the code, investigate these files:
 
 * html entry point (*src/index.js*)
 * menu (*src/App.js*)
@@ -16,16 +20,27 @@ The frontend server will handle user authentication, navigation, and rendering e
 * dashboard embedding (*src/components/EmbedSDK*)
 * explore embedding (*src/components/EmbedExplore*)
 
+#### Components
+This application relies heavily on [Looker Components](https://developers.looker.com/components/develop).  The Looker Components library allows developers to quickly replicate the polished Looker user experience.  This application uses UI Components in many places.  It also contains examples of the new [Visualization Components](https://github.com/looker-open-source/components/tree/main/packages/visualizations) in the [Visualization Component file](*src/components/VizComponent)
+
 ## Looker Setup
 
-By default, Looker won't have the necessary dashboards to display embedded content.  We can add a dashboard and data from a public Looker block.
+You need administartive access to a Looker instance to embed Looker.  By default, every Looker won't have the necessary dashboards to display the content featured in this application.  We can add a dashboard and data from a public Looker block.  If you already have a connection to Google BigQuery configured in your Looker instance, please skip to step 3 below. 
 
 ### Install Looker Data Block
-1. Create a [GCP account](https://console.cloud.google.com/getting-started), if you don't already have one.
+1. Start a free trial of [GCP](https://console.cloud.google.com/getting-started)
+   - Sign up for a [free trial](https://console.cloud.google.com/freetrial/signup/tos)
+      - This requires entering payment information, but you won't be charged unless you sign up for a paid account.
+   - Create a new BigQuery database
+      - Visit the Bigquery site and click [Try BigQuery free](https://cloud.google.com/bigquery)
+      - This will guide you through the creation process
 2. Create a connection to BigQuery, [create a new one](https://docs.looker.com/setup-and-management/database-config/google-bigquery) 
-   - It can use any schema, even the public_datasets schema
-   - You must [create a schema for derived tables](https://docs.looker.com/setup-and-management/database-config/google-bigquery#creating_a_temporary_dataset_for_persistent_derived_tables) in BigQuery
-   - Enable Persistent Derived Tables when configuring the connection
+   - Create a service account with access to the Google project and download the JSON credentials certificate.
+   - Create a temporary dataset for storing persistent derived tables.
+   - Set up the Looker connection to your database.
+      - Use the public_datasets schema
+      - Enable Persistent Derived Tables when configuring the connection
+   - Test the connection.
 3. [Install the Census Data Block](https://docs.looker.com/data-modeling/looker-blocks#data_blocks) via the marketplace in your looker instance
    - When prompted, choose to install using the BigQuery connection from step 2
    - If it is successfully installed, you can view the dashboard in Looker with the context `/embed/dashboards/data_block_acs_bigquery::acs_census_overview`

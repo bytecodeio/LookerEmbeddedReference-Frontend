@@ -2,14 +2,14 @@
 // Embedded dashboards let you build an interactive and highly curated data experience within your application
 // This file is used to embed a dashboard using LookerEmbedSDK with EmbedBuilder to initialize your connection and help create the iframe element
 
-//  In addition, this demonstrate how to bind events to the embedded dashboard. It uses React to manage references to the dashboard, 
+//  In addition, this demonstrate how to bind events to the embedded dashboard. It logs events to the console, where they can be investigated in depth.  
 // 
 
 
 import React, { useCallback } from 'react'
 import styled from "styled-components"
 import { LookerEmbedSDK } from '@looker/embed-sdk'
-import { Space } from '@looker/components'
+import { Space, Link, SpaceVertical } from '@looker/components'
 
 const EmbedDashboardEvents = () => {
 
@@ -63,10 +63,13 @@ const EmbedDashboardEvents = () => {
   return (
     <Space>
       <div className={"embed-dashboard-main"}>
+        <SpaceVertical>
         <PageTitle >Embedded Dashboard with JavaScript Events</PageTitle>
-        <div>View the JavaScript event details logged in your browser's developer console!</div>
+        <DevMessage>View the JavaScript event details logged in the <Link href='https://en.wikipedia.org/wiki/Web_development_tools'>developer console.</Link>
+        </DevMessage>
         { /* Step 0) we have a simple container, which performs a callback to our makeDashboard function */}
         <Dashboard ref={makeDashboard}></Dashboard>
+        </SpaceVertical>
       </div>
     </Space>
   )
@@ -90,4 +93,14 @@ const PageTitle = styled.div`
   margin-left: 3rem;
   }
 `
+
+const DevMessage = styled.div`
+font-family: "Google Sans", "Open Sans", Arial, Helvetica, sans-serif;
+font-size: 20px;
+color: #5F6368;
+font-weight: 200;
+margin-left: 3rem;
+}
+`
+
 export default EmbedDashboardEvents

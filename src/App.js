@@ -3,6 +3,7 @@ import EmbedSDK from './components/EmbedSDK'
 import EmbedExplore from './components/EmbedExplore'
 import VizComponent from './components/VizComponent'
 import EmbedQuery from './components/EmbedQuery'
+import EmbedDashboardEvents from './components/EmbedDashboardEvents'
 import './App.css'
 import TopBanner from './components/Navigation/TopBanner'
 import {
@@ -42,6 +43,11 @@ const routes =
       url: '/viz-component',
       text: 'Visualization Component',
       component: (<VizComponent queryNumber="5742" />)
+    },
+    {
+      url: '/dashboard-events',
+      text: 'JavaScript Events',
+      component: (<EmbedDashboardEvents />)
     },
     // Uncomment the code below to add an additional route to an embedded Look.
     // {

@@ -14,7 +14,7 @@
 import React, { useState } from 'react'
 import { sdk } from "../../helpers/CorsSessionHelper"
 import { Query, Visualization, QueryFormatter } from '@looker/visualizations'
-import { Button, InputText, Space, SpaceVertical } from '@looker/components'
+import { Button, InputText, Link, Space, SpaceVertical } from '@looker/components'
 import { Settings } from '@styled-icons/material-outlined'
 import {Link} from "react-router-dom"
 const EmbedComponent = (props) => {

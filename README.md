@@ -17,8 +17,10 @@ The frontend server will handle user authentication, navigation, and rendering e
 * html entry point (*src/index.js*)
 * menu (*src/App.js*)
 * routing (*src/App.js*)
-* dashboard embedding (*src/components/EmbedSDK*)
+* dashboard embedding (*src/components/EmbedDashboard*)
 * explore embedding (*src/components/EmbedExplore*)
+* query embedding (*src/components/EmbedQuery*)
+* embedding multiple iframes (*src/components/EmbedTwoIframes*)
 
 #### Components
 This application relies heavily on [Looker Components](https://developers.looker.com/components/develop).  The Looker Components library allows developers to quickly replicate the polished Looker user experience.  This application uses UI Components in many places.  It also contains examples of the new [Visualization Components](https://github.com/looker-open-source/components/tree/main/packages/visualizations) in the [Visualization Component file](*src/components/VizComponent)

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import EmbedSDK from './components/EmbedSDK'
+import EmbedDashboard from './components/EmbedDashboard'
 import EmbedExplore from './components/EmbedExplore'
 import VizComponent from './components/VizComponent'
 import EmbedQuery from './components/EmbedQuery'
@@ -15,7 +15,7 @@ import {
 // import EmbedLookSDK from './components/EmbedLookSDK'
 import { ComponentsProvider } from '@looker/components-providers'
 import Container from './RouteContainer'
-import { Layout,Box, Space } from '@looker/components';
+import { Layout, Box, Space } from '@looker/components';
 import { NavigationMenu } from './components/Navigation/NavigationMenu';
 import { EmbedSDKInit } from './components/common/EmbedInit'
 
@@ -26,7 +26,7 @@ const routes =
     {
       url: '/embed-dashboard',
       text: 'Embedded Dashboard',
-      component: (<EmbedSDK />)
+      component: (<EmbedDashboard />)
     },
     {
       url: '/embed-explore',
@@ -37,11 +37,6 @@ const routes =
       url: '/embed-query',
       text: 'Embedded Query',
       component: (<EmbedQuery />)
-    },
-    {
-      url: '/viz-component',
-      text: 'Visualization Component',
-      component: (<VizComponent queryNumber="5742" />)
     },
     // Uncomment the code below to add an additional route to an embedded Look.
     // {
@@ -71,13 +66,13 @@ function App() {
       <Router>
         <TopBanner setMenuToggle={setMenuToggle} menuToggle={menuToggle} />
         <Space>
-          <NavigationMenu menuToggle={menuToggle} routes={routes} />      
+          <NavigationMenu menuToggle={menuToggle} routes={routes} />
           <Routes>
-            <Route exact path='/'  element={<Navigate replace to={routes.examples[0].url} />} />
-      
+            <Route exact path='/' element={<Navigate replace to={routes.examples[0].url} />} />
+
             {routes.examples.map(e => {
               return (
-                <Route path={e.url} default element={<Container content={e.component} />} />
+                <Route path={e.url} default element={<Container content={e.component} />} key={e.text} />
               )
             })
             }

@@ -74,7 +74,7 @@ const EmbedDashboardEvents = () => {
           </DevMessage>
           <Space marginLeft={'3rem'}>
             {/* 
-            These methods are from https://looker-open-source.github.io/embed-sdk/classes/lookerembeddashboard.html 
+            These buttons use methods from https://looker-open-source.github.io/embed-sdk/classes/lookerembeddashboard.html 
             They allow interaction with the Dashboard from the parent page.
             */}
             <Button onClick={() => dashboardRef.run()}>Run</Button>

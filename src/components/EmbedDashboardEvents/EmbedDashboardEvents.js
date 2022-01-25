@@ -70,15 +70,17 @@ const EmbedDashboardEvents = () => {
       <div className={"embed-dashboard-main"}>
         <SpaceVertical>
           <PageTitle >Embedded Dashboard with JavaScript Events</PageTitle>
-          <DevMessage>View the JavaScript event details logged in the <Link href='https://en.wikipedia.org/wiki/Web_development_tools'>developer console.</Link>
+          <DevMessage>View JavaScript events <em>from</em> the iframe logged in the <Link href='https://en.wikipedia.org/wiki/Web_development_tools'>developer console.</Link>
           </DevMessage>
-          <Space marginLeft={'3rem'}>
+          <Space>
             {/* 
             These buttons use methods from https://looker-open-source.github.io/embed-sdk/classes/lookerembeddashboard.html 
             They allow interaction with the Dashboard from the parent page.
             */}
+            <DevMessage>Send JavaScript events <em>to</em> the iframe using these buttons:</DevMessage> 
             <Button onClick={() => dashboardRef.run()}>Run</Button>
             <Button onClick={() => dashboardRef.stop()}>Stop</Button>
+            <Button onClick={() => dashboardRef.openScheduleDialog()}>Schedule</Button>
           </Space>
           { /* Step 0) we have a simple container, which performs a callback to our makeDashboard function */}
           <Dashboard ref={makeDashboard}></Dashboard>

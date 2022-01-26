@@ -2,7 +2,7 @@
 // Embedded dashboards let you build an interactive and highly curated data experience within your application
 // This file is used to embed a dashboard using LookerEmbedSDK with EmbedBuilder to initialize your connection and help create the iframe element
 
-//  In addition, this demonstrate how to bind events to the embedded dashboard. It logs events to the console, where they can be investigated in depth.  
+//  In addition, this file demonstrates how to bind events to the embedded dashboard. It logs events to the console, where they can be investigated in depth.  
 // 
 
 
@@ -77,7 +77,7 @@ const EmbedDashboardEvents = () => {
             These buttons use methods from https://looker-open-source.github.io/embed-sdk/classes/lookerembeddashboard.html 
             They allow interaction with the Dashboard from the parent page.
             */}
-            <DevMessage>Send JavaScript events <em>to</em> the iframe using these buttons:</DevMessage> 
+            <DevMessage>Send JavaScript events <em>to</em> the iframe using these buttons:</DevMessage>
             <Button onClick={() => dashboardRef.run()}>Run</Button>
             <Button onClick={() => dashboardRef.stop()}>Stop</Button>
             <Button onClick={() => dashboardRef.openScheduleDialog()}>Schedule</Button>

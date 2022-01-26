@@ -74,9 +74,9 @@ These can be set in a .env file in the root project directory.  In production sy
 ```
 PBL_PORT=3001  # Note different port from backend 
 API_HOST=http://localhost:3000
-LOOKER_HOST=https://bytecodeef.looker.com
-LOOKER_API_HOST=https://bytecodeef.looker.com:19999
-LOOKERSDK_EMBED_HOST=https://example.looker.com   
+LOOKER_HOST=https://[INSTANCE].looker.com
+LOOKER_API_HOST=https://[INSTANCE].looker.com:19999
+LOOKERSDK_EMBED_HOST=https://[INSTANCE].looker.com   
 ```
 For most installations, the LOOKER_HOST will be the same as the LOOKERSDK_EMBED_HOST variable. The LOOKER_API_HOST is usually the same, but with port 19999.
 

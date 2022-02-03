@@ -3,7 +3,7 @@
  https://docs.looker.com/data-modeling/extension-framework/vis-components
  It renders much faster than an Iframe embed!
 
- This example includes a filter, but the query comes from a template. 
+ This example includes query creation, where it generates a new query. 
 
  The minimal example for a visualization component is just: 
   <Query sdk={sdk} query={123}>
@@ -14,51 +14,55 @@
 import React, { useState, useEffect } from 'react'
 import { sdk } from "../../helpers/CorsSessionHelper"
 import { Query, Visualization } from '@looker/visualizations'
-import { SpaceVertical } from '@looker/components'
+import { Space, SpaceVertical, FieldRangeSlider } from '@looker/components'
 import { sampleQuery } from './sampleQuery'
 import styled from 'styled-components'
+
 const EmbedComponent = (props) => {
-  // Add 2 variables to state, so that the user controls when the input is complete
+  // Add 2 variables to state, so that the user controls the population passed in the query
   const [queryId, updateQueryId] = useState()
-  const [confirmedId, confirm] = useState()
+  const [populationFilter, updatePopulationFilter] = useState([0, 500000000])
 
-  // Add two helper functions to handle the state updates
-  const updateFromInput = (event) => { updateQueryId(event.currentTarget.value) }
-  const confirmId = () => confirm(queryId)
+  // This creates a sample query to display.
+  // This works well on any looker instance with the necessary lookML model (from the census block).
+  // If you have a static query ID, you can use that instead of doing this extra step.
+  useEffect(() => {
+    sampleQuery.filters["blockgroup.total_pop"] = JSON.stringify(populationFilter)
+    sdk.ok(sdk.create_query(JSON.stringify(sampleQuery), 'id'))
+      .then(res => updateQueryId(res.id))
+    // The second argument to the effect is an array of elements to 'watch'. 
+    // A single variable makes the effect run when the populationFilter changes.
+  }, [populationFilter])
 
-  // Using an effect should trigger this update function.
-  useEffect( () => {
-    sdk.ok(
-      sdk.create_query(
-        JSON.stringify(sampleQuery)
-      ,'id')).then((id) => {
-    confirm(id)
-  })},
-  []
-  )
 
   return (
-    <SpaceVertical>
-      <Query sdk={sdk} query={confirmedId}>
-        <Visualization />
-      </Query>
-    </SpaceVertical>
+    <Space>
+      <div className={"embed-dashboard-main"}>
+        <SpaceVertical gap={'large'}>
+          <PageTitle>Visualization Component With Filter</PageTitle>
+          <FieldRangeSlider 
+            label={"Population Filter:"} 
+            min={0} 
+            max={50000000} 
+            step={500000} 
+            width={500} 
+            onChange={updatePopulationFilter} />
+          <Query sdk={sdk} query={queryId}>
+            <Visualization />
+          </Query>
+        </SpaceVertical>
+      </div>
+    </Space>
   )
 }
 
-const Button = styled.button`
-background: rgb(66, 133, 244); 
-border: 1px solid rgb(66, 133, 244);
-padding: 0px 1.5rem;
--webkit-box-align: center;
-align-items: center;
-border-radius: 5px; 
-cursor: pointer;
-font-weight: 500;
--webkit-box-pack: center;
-justify-content: center;
-line-height: 1;
-font-size: 0.875rem;
-height: 36px
+const PageTitle = styled.div`
+  font-family: "Google Sans", "Open Sans", Arial, Helvetica, sans-serif;
+  font-size: 26px;
+  color: #5F6368;
+  font-weight: 200;
+  margin-left: 3rem;
+  }
 `
+
 export default EmbedComponent

@@ -3,7 +3,7 @@
  https://docs.looker.com/data-modeling/extension-framework/vis-components
  It renders much faster than an Iframe embed!
 
- This example includes a query picker, where it allows the user to choose a query. 
+ This example includes query creation, where it generates a new query. 
 
  The minimal example for a visualization component is just: 
   <Query sdk={sdk} query={123}>
@@ -11,55 +11,47 @@
   </Query
 */
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { sdk } from "../../helpers/CorsSessionHelper"
-import { Query, Visualization, QueryFormatter } from '@looker/visualizations'
-import { InputText, Link, Space, SpaceVertical } from '@looker/components'
-import { Settings } from '@styled-icons/material-outlined'
-import styled from "styled-components"
+import { Query, Visualization } from '@looker/visualizations'
+import { Space } from '@looker/components'
+import { sampleQuery } from './sampleQuery'
+import styled from 'styled-components'
 
 const EmbedComponent = (props) => {
-  // Add 2 variables to state, so that the user controls when the input is complete
+  // Add a variables to state
   const [queryId, updateQueryId] = useState()
-  const [confirmedId, confirm] = useState(props.queryNumber)
 
-  // Add two helper functions to handle the state updates
-  const updateFromInput = (event) => { updateQueryId(event.currentTarget.value) }
-  const confirmId = () => confirm(queryId)
+  // This creates a sample query to display.
+  // This works well on any looker instance with the necessary lookML model (from the census block).
+  // If you have a static query ID, you can use that instead of doing this extra step.
+  useEffect(() => {
+    sdk.ok(sdk.create_query(JSON.stringify(sampleQuery), 'id'))
+      .then(res => updateQueryId(res.id))
+    // The second argument to the effect is an array of elements to 'watch'. 
+    // An empty array like this makes the effect execute only once.
+  }, [])
+
 
   return (
-    <SpaceVertical>
-      <Space>
-      <InputText
-        autoResize
-        name="queryIdorSlug"
-        placeholder="Query ID or Slug"
-        iconBefore={<Settings />}
-        onChange={updateFromInput}
-      />
-      <Button onClick={confirmId} >Go</Button>
-      <Link href={`${process.env.LOOKER_API_HOST}/admin/queries`}>Look up Query ID</Link>
+    <Space>
+      <div className={"embed-dashboard-main"}><PageTitle>Visualization Component</PageTitle>
+        {queryId > 0 ? null : <PageTitle>Generating a new query, please wait.</PageTitle>}
+        <Query sdk={sdk} query={queryId}>
+          <Visualization />
+        </Query>
+      </div>
     </Space>
-      <Query sdk={sdk} query={confirmedId}>
-        <Visualization />
-      </Query>
-    </SpaceVertical>
   )
 }
 
-const Button = styled.button`
-background: rgb(66, 133, 244); 
-border: 1px solid rgb(66, 133, 244);
-padding: 0px 1.5rem;
--webkit-box-align: center;
-align-items: center;
-border-radius: 5px; 
-cursor: pointer;
-font-weight: 500;
--webkit-box-pack: center;
-justify-content: center;
-line-height: 1;
-font-size: 0.875rem;
-height: 36px
+const PageTitle = styled.div`
+  font-family: "Google Sans", "Open Sans", Arial, Helvetica, sans-serif;
+  font-size: 26px;
+  color: #5F6368;
+  font-weight: 200;
+  margin-left: 3rem;
+  }
 `
+
 export default EmbedComponent

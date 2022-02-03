@@ -5,6 +5,9 @@ export const sampleQuery =
       fields: ['blockgroup.total_pop', 'state'],
       sorts: ['blockgroup.total_pop desc'],
       limit: '500',
+      filters: {
+        "blockgroup.total_pop": "[0,50000000]"
+      },
       column_limit: '50',
       vis_config:
       {

@@ -3,7 +3,7 @@
  https://docs.looker.com/data-modeling/extension-framework/vis-components
  It renders much faster than an Iframe embed!
 
- This example includes a query picker, where it allows the user to choose a query. 
+ This example includes a filter, but the query comes from a template. 
 
  The minimal example for a visualization component is just: 
   <Query sdk={sdk} query={123}>
@@ -11,35 +11,34 @@
   </Query
 */
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { sdk } from "../../helpers/CorsSessionHelper"
-import { Query, Visualization, QueryFormatter } from '@looker/visualizations'
-import { InputText, Link, Space, SpaceVertical } from '@looker/components'
-import { Settings } from '@styled-icons/material-outlined'
-import styled from "styled-components"
-
+import { Query, Visualization } from '@looker/visualizations'
+import { SpaceVertical } from '@looker/components'
+import { sampleQuery } from './sampleQuery'
+import styled from 'styled-components'
 const EmbedComponent = (props) => {
   // Add 2 variables to state, so that the user controls when the input is complete
   const [queryId, updateQueryId] = useState()
-  const [confirmedId, confirm] = useState(props.queryNumber)
+  const [confirmedId, confirm] = useState()
 
   // Add two helper functions to handle the state updates
   const updateFromInput = (event) => { updateQueryId(event.currentTarget.value) }
   const confirmId = () => confirm(queryId)
 
+  // Using an effect should trigger this update function.
+  useEffect( () => {
+    sdk.ok(
+      sdk.create_query(
+        JSON.stringify(sampleQuery)
+      ,'id')).then((id) => {
+    confirm(id)
+  })},
+  []
+  )
+
   return (
     <SpaceVertical>
-      <Space>
-      <InputText
-        autoResize
-        name="queryIdorSlug"
-        placeholder="Query ID or Slug"
-        iconBefore={<Settings />}
-        onChange={updateFromInput}
-      />
-      <Button onClick={confirmId} >Go</Button>
-      <Link href={`${process.env.LOOKER_API_HOST}/admin/queries`}>Look up Query ID</Link>
-    </Space>
       <Query sdk={sdk} query={confirmedId}>
         <Visualization />
       </Query>

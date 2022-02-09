@@ -3,12 +3,17 @@
  https://docs.looker.com/data-modeling/extension-framework/vis-components
  It renders much faster than an Iframe embed!
 
- This example includes query creation, where it generates a new query. 
+ This example includes query creation, where it generates a new query.  
+ The query is based on a sample query, stored in the sampleQuery.js file.
+ It also includes a slider, which can be used to select a range of population.
+ Every interaction with the slider changes the React state, and that triggers 
+ a React effect.  The effect calls the Looker API call to create a new query.  
 
- The minimal example for a visualization component is just: 
+ The fastest, minimal example for a visualization component is just: 
   <Query sdk={sdk} query={123}>
     <Visualization>
   </Query
+
 */
 
 import React, { useState, useEffect } from 'react'

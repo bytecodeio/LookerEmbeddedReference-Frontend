@@ -41,7 +41,7 @@ You need administartive access to a Looker instance to embed Looker.  By default
    - [Create a temporary dataset](https://docs.looker.com/setup-and-management/database-config/google-bigquery#creating_a_temporary_dataset_for_persistent_derived_tables) for storing persistent derived tables.
    - [Set up the Looker connection](https://docs.looker.com/setup-and-management/database-config/google-bigquery#setting_up_the_bigquery_connection_in_looker) to your database.
       - Use the public_datasets schema
-      - Enable Persistent Derived Tables when configuring the connection
+      - [Enable Persistent Derived Tables](https://docs.looker.com/setup-and-management/database-config/google-bigquery#creating_a_temporary_dataset_for_persistent_derived_tables) when configuring the connection
    - Test the connection.
 3. [Install the Demographic Data Block](https://docs.looker.com/data-modeling/looker-blocks#data_blocks) via the marketplace in your looker instance
    - In your Looker instance, click the [*Marketplace*](https://docs.looker.com/data-modeling/marketplace) icon in the upper right hand corner

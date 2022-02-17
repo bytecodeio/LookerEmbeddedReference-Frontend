@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
-import EmbedDashboard from './components/EmbedDashboard'
-import EmbedExplore from './components/EmbedExplore'
+import React from 'react'
+import EmbedDashboard from './components/EmbedDashboard/EmbedDashboard'
+import EmbedExplore from './components/EmbedExplore/EmbedExplore'
 import VizComponent from './components/VizComponent/VizComponent'
 import VizComponentWFilter from './components/VizComponent/VizComponentWFilter'
-import EmbedQuery from './components/EmbedQuery'
-import EmbedDashboardEvents from './components/EmbedDashboardEvents'
+import EmbedQuery from './components/EmbedQuery/EmbedQuery'
+import EmbedDashboardEvents from './components/EmbedDashboardEvents/EmbedDashboardEvents'
 import './App.css'
 import TopBanner from './components/Navigation/TopBanner'
 import {
@@ -17,7 +17,7 @@ import {
 // import EmbedLookSDK from './components/EmbedLookSDK'
 import { ComponentsProvider } from '@looker/components-providers'
 import Container from './RouteContainer'
-import { Layout, Box, Space } from '@looker/components';
+import { Space } from '@looker/components';
 import { NavigationMenu } from './components/Navigation/NavigationMenu';
 import { EmbedSDKInit } from './components/common/EmbedInit'
 import EmbedTwoIframes from './components/EmbedTwoIframes/EmbedTwoIframes'
@@ -113,7 +113,6 @@ function App() {
             }
           </Routes>
         </Space>
-
       </Router>
     </ComponentsProvider>
   )

@@ -101,5 +101,6 @@ a.active > .nav-item {
 
 .main-container {
     width: 95%;
-    margin: auto !important;
+    margin: 0;
+    align-self: baseline;
 }

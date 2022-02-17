@@ -19,6 +19,9 @@ import Container from './RouteContainer'
 import { Layout, Box, Space } from '@looker/components';
 import { NavigationMenu } from './components/Navigation/NavigationMenu';
 import { EmbedSDKInit } from './components/common/EmbedInit'
+import EmbedTwoIframes from './components/EmbedTwoIframes/EmbedTwoIframes'
+import EmbedDashboardLayout from './components/EmbedDashboardLayout/EmbedDashboardLayout'
+import EmbedDashboardDownload from './components/EmbedDashboardDownload/EmbedDashboardDownload'
 
 const routes =
 {
@@ -48,6 +51,21 @@ const routes =
       url: '/dashboard-events',
       text: 'JavaScript Events',
       component: (<EmbedDashboardEvents />)
+    },
+    {
+      url: '/multiple-embeds',
+      text: 'Multiple Embeds',
+      component: (<EmbedTwoIframes />)
+    },
+    {
+      url: '/dashboard-layout',
+      text: 'Dynamic Dashboard Layout',
+      component: (<EmbedDashboardLayout />)
+    },
+    {
+      url: '/dashboard-download',
+      text: 'Dashboard Download',
+      component: (<EmbedDashboardDownload />)
     },
     // Uncomment the code below to add an additional route to an embedded Look.
     // {

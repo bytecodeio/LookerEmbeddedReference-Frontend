@@ -37,15 +37,19 @@ You need administartive access to a Looker instance to embed Looker.  By default
       - Visit the Bigquery site and click [Try BigQuery free](https://cloud.google.com/bigquery)
       - This will guide you through the creation process
 2. Create a connection to BigQuery, [create a new one](https://docs.looker.com/setup-and-management/database-config/google-bigquery) 
-   - Create a service account with access to the Google project and download the JSON credentials certificate.
-   - Create a temporary dataset for storing persistent derived tables.
-   - Set up the Looker connection to your database.
+   - [Create a service account](https://docs.looker.com/setup-and-management/database-config/google-bigquery#creating_a_service_account_and_downloading_the_json_credentials_certificate) with access to the Google project and download the JSON credentials certificate.
+   - [Create a temporary dataset](https://docs.looker.com/setup-and-management/database-config/google-bigquery#creating_a_temporary_dataset_for_persistent_derived_tables) for storing persistent derived tables.
+   - [Set up the Looker connection](https://docs.looker.com/setup-and-management/database-config/google-bigquery#setting_up_the_bigquery_connection_in_looker) to your database.
       - Use the public_datasets schema
       - Enable Persistent Derived Tables when configuring the connection
    - Test the connection.
-3. [Install the Census Data Block](https://docs.looker.com/data-modeling/looker-blocks#data_blocks) via the marketplace in your looker instance
+3. [Install the Demographic Data Block](https://docs.looker.com/data-modeling/looker-blocks#data_blocks) via the marketplace in your looker instance
+   - In your Looker instance, click the *Marketplace* icon in the upper right hand corner
+   - Click the *Models* menu icon on the left
+   - Click on *ASC Demographic Data*
+   - Click *Install* 
    - When prompted, choose to install using the BigQuery connection from step 2
-   - If it is successfully installed, you can view the dashboard in Looker with the context `/embed/dashboards/data_block_acs_bigquery::acs_census_overview`
+   - Once installed, you can view the dashboard in Looker with the context `/embed/dashboards/data_block_acs_bigquery::acs_census_overview`
 
 # Installation
 Before using the frontend server, you'll need to install it.

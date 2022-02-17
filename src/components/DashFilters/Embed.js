@@ -37,7 +37,6 @@ const Embed = () => {
       )
     LookerEmbedSDK.createDashboardWithId(20)
     .appendTo(el)
-    .withNext()
     .on('dashboard:loaded',mangageFilterState)
     .build()
     .connect()

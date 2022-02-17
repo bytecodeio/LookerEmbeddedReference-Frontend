@@ -9,7 +9,7 @@
 import React, { useCallback } from 'react'
 import styled from "styled-components"
 import { LookerEmbedSDK } from '@looker/embed-sdk'
-import { Space, Link, SpaceVertical, Button } from '@looker/components'
+import { Space, Link, SpaceVertical } from '@looker/components'
 
 const EmbedDashboardEvents = () => {
 
@@ -30,8 +30,6 @@ const EmbedDashboardEvents = () => {
       LookerEmbedSDK.createDashboardWithId("data_block_acs_bigquery::acs_census_overview")
         // adds the iframe to the DOM as a child of a specific element
         .appendTo(el)
-        // this instructs the SDK to point to the /dashboards-next/ version
-        .withNext()
         // the .on() method allows us to listen for and respond to events inside the iframe. See here for a list of events: https://docs.looker.com/reference/embedding/embed-javascript-events
         .on('dashboard:loaded', (e) => { console.log('On dashboards where the tiles are not set to auto-run, a dashboard and its elements have loaded but queries are not yet running.'); console.log(e) })
         .on('dashboard:run:start', (e) => { console.log('A dashboard has begun loading, and its tiles have started loading and querying for data.'); console.log(e) })
@@ -55,7 +53,7 @@ const EmbedDashboardEvents = () => {
         // this establishes event communication between the iframe and parent page
         .connect()
         // This takes the dashboard's reference and assigns it to a variable defined earlier.
-        // It will be used for sending requests to the dashboard.
+        // It will be used for sending JavaScript events to the dashboard iframe.
         .then(x => dashboardRef = x)
         // catch various errors which can occur in the process (note: does not catch 404 on content)
         .catch((error) => {
@@ -117,5 +115,19 @@ font-weight: 200;
 margin-left: 3rem;
 }
 `
-
+const Button = styled.button`
+background: rgb(66, 133, 244); 
+border: 1px solid rgb(66, 133, 244);
+padding: 0px 1.5rem;
+-webkit-box-align: center;
+align-items: center;
+border-radius: 5px; 
+cursor: pointer;
+font-weight: 500;
+-webkit-box-pack: center;
+justify-content: center;
+line-height: 1;
+font-size: 0.875rem;
+height: 36px
+`
 export default EmbedDashboardEvents

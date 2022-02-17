@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import EmbedDashboard from './components/EmbedDashboard'
 import EmbedExplore from './components/EmbedExplore'
-import VizComponent from './components/VizComponent'
+import VizComponent from './components/VizComponent/VizComponent'
+import VizComponentWFilter from './components/VizComponent/VizComponentWFilter'
 import EmbedQuery from './components/EmbedQuery'
 import EmbedDashboardEvents from './components/EmbedDashboardEvents'
 import './App.css'
@@ -42,11 +43,16 @@ const routes =
       text: 'Embedded Query',
       component: (<EmbedQuery />)
     },
-//     {
-//       url: '/viz-component',
-//       text: 'Visualization Component',
-//       component: (<VizComponent queryNumber="5742" />)
-//     },
+    {
+      url: '/viz-component',
+      text: 'Visualization Component',
+      component: (<VizComponent />)
+    },
+    {
+      url: '/viz-component-w-filter',
+      text: 'Visualization Component + Filter',
+      component: (<VizComponentWFilter />)
+    },
     {
       url: '/dashboard-events',
       text: 'JavaScript Events',

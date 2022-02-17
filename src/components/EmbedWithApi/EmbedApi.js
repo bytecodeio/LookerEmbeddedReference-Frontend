@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { LookerEmbedSDK } from '@looker/embed-sdk'
 import { sdk } from "../../helpers/CorsSessionHelper"
 import { QueryTable } from '../common/QueryDataTable'
+import styled from 'styled-components'
 
 function EmbedApi() {
 
@@ -16,7 +17,6 @@ function EmbedApi() {
 
     LookerEmbedSDK.createDashboardWithId("data_block_acs_bigquery::acs_census_overview")
     .appendTo('#lookerdashboard')
-    .withNext()
     .build()
     .connect()
     .then(setupDashboard)
@@ -70,7 +70,7 @@ function EmbedApi() {
 
   return (
     <>
-      <button className='reload-dashboard'>Change User Attribute</button>
+      <Button className='reload-dashboard'>Change User Attribute</Button>
       <div className='container' style={{ display: 'flex', height: '100%' }}>
         <div className='stuff' style={{width: '49%', height: '100%'}}>
           <div id="lookerdashboard" style={{width: '100%', height: '100%'}}></div>
@@ -83,5 +83,21 @@ function EmbedApi() {
   )
 
 }
+
+const Button = styled.button`
+background: rgb(66, 133, 244); 
+border: 1px solid rgb(66, 133, 244);
+padding: 0px 1.5rem;
+-webkit-box-align: center;
+align-items: center;
+border-radius: 5px; 
+cursor: pointer;
+font-weight: 500;
+-webkit-box-pack: center;
+justify-content: center;
+line-height: 1;
+font-size: 0.875rem;
+height: 36px
+`
 
 export default EmbedApi

@@ -4,10 +4,10 @@
 import React from 'react'
 import Embed from './Embed'
 
-const EmbedTwoInstances = (() => {
+const EmbedTwoIframes = (() => {
   return (
     <Embed />
   )
 })
 
-export default EmbedTwoInstances
+export default EmbedTwoIframes

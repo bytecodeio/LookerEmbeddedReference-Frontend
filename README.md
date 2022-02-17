@@ -44,7 +44,7 @@ You need administartive access to a Looker instance to embed Looker.  By default
       - Enable Persistent Derived Tables when configuring the connection
    - Test the connection.
 3. [Install the Demographic Data Block](https://docs.looker.com/data-modeling/looker-blocks#data_blocks) via the marketplace in your looker instance
-   - In your Looker instance, click the *Marketplace* icon in the upper right hand corner
+   - In your Looker instance, click the [*Marketplace*](https://docs.looker.com/data-modeling/marketplace) icon in the upper right hand corner
    - Click the *Models* menu icon on the left
    - Click on *ASC Demographic Data*
    - Click *Install* 

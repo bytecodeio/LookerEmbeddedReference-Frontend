@@ -13,7 +13,6 @@
   <Query sdk={sdk} query={123}>
     <Visualization>
   </Query
-
 */
 
 import React, { useState, useEffect } from 'react'

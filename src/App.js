@@ -11,7 +11,8 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  Navigate,
+  useLocation
 } from "react-router-dom";
 
 // import EmbedLookSDK from './components/EmbedLookSDK'
@@ -19,6 +20,7 @@ import { ComponentsProvider } from '@looker/components-providers'
 import Container from './RouteContainer'
 import { Layout, Box, Space } from '@looker/components';
 import { NavigationMenu } from './components/Navigation/NavigationMenu';
+import { CodeView } from './components/Navigation/CodeView';
 import { EmbedSDKInit } from './components/common/EmbedInit'
 
 const routes =
@@ -28,38 +30,45 @@ const routes =
     {
       url: '/embed-dashboard',
       text: 'Embedded Dashboard',
-      component: (<EmbedDashboard />)
+      component: (<EmbedDashboard />),
+      github: 'https://raw.githubusercontent.com/bytecodeio/LookerEmbeddedReference-Frontend/main/src/components/EmbedDashboard/EmbedDashboard.js?token=GHSAT0AAAAAABOZLN3Q6TE76IQEKAZV6ZV2YQX2MUQ'
     },
     {
       url: '/embed-explore',
       text: 'Embedded Explore',
-      component: (<EmbedExplore />)
+      component: (<EmbedExplore />),
+      github: 'https://raw.githubusercontent.com/bytecodeio/LookerEmbeddedReference-Frontend/main/src/components/EmbedExplore/EmbedExplore.js?token=GHSAT0AAAAAABOZLN3R4SOM3VOXH7QL7RCKYQX2NKQ'
     },
     {
       url: '/embed-query',
       text: 'Embedded Query',
-      component: (<EmbedQuery />)
+      component: (<EmbedQuery />),
+      github: 'https://raw.githubusercontent.com/bytecodeio/LookerEmbeddedReference-Frontend/main/src/components/EmbedQuery/EmbedQuery.js?token=GHSAT0AAAAAABOZLN3QLGSSBC3QSJIQZSQ2YQX2N4A'
     },
     {
       url: '/viz-component',
       text: 'Visualization Component',
-      component: (<VizComponent />)
+      component: (<VizComponent />),
+      github: 'https://raw.githubusercontent.com/bytecodeio/LookerEmbeddedReference-Frontend/main/src/components/VizComponent/VizComponent.js?token=GHSAT0AAAAAABOZLN3RH5FOANCWWDDJNZAIYQX2OJQ'
     },
     {
       url: '/viz-component-w-filter',
       text: 'Visualization Component + Filter',
-      component: (<VizComponentWFilter />)
+      component: (<VizComponentWFilter />),
+      github: 'https://raw.githubusercontent.com/bytecodeio/LookerEmbeddedReference-Frontend/main/src/components/VizComponent/VizComponentWFilter.js?token=GHSAT0AAAAAABOZLN3RH5FOANCWWDDJNZAIYQX2OJQ'
     },
     {
       url: '/dashboard-events',
       text: 'JavaScript Events',
-      component: (<EmbedDashboardEvents />)
+      component: (<EmbedDashboardEvents />),
+      github: 'https://raw.githubusercontent.com/bytecodeio/LookerEmbeddedReference-Frontend/main/src/components/EmbedDashboardEvents/EmbedDashboardEvents.js?token=GHSAT0AAAAAABOZLN3QK3X54CT4TQEM7IP2YQX2O6A'
     },
     // Uncomment the code below to add an additional route to an embedded Look.
     // {
     //   url: '/embed-look',
     //   text: 'Embed Look',
-    //   component:(<EmbedLookSDK />)
+    //   component:(<EmbedLookSDK />),
+    //   github: ''
     // },
   ]
 }
@@ -67,6 +76,7 @@ const routes =
 function App() {
 
   const [menuToggle, setMenuToggle] = React.useState(true)
+  const [codeToggle, setCodeToggle] = React.useState(false)
   // This code adds a Components Provider, which allows Looker components to be easily used later
   // It also adds a top banner, which includes navigation
   // It switches 'routes' based on the path and renders a 'Container' with the appropriate content
@@ -81,7 +91,7 @@ function App() {
   return (
     <ComponentsProvider>
       <Router>
-        <TopBanner setMenuToggle={setMenuToggle} menuToggle={menuToggle} />
+        <TopBanner setMenuToggle={setMenuToggle} menuToggle={menuToggle} setCodeToggle={setCodeToggle} codeToggle={codeToggle} />
         <Space>
           <NavigationMenu menuToggle={menuToggle} routes={routes} />
           <Routes>
@@ -94,6 +104,7 @@ function App() {
             })
             }
           </Routes>
+          <CodeView codeToggle={codeToggle} routes={routes}/>
         </Space>
 
       </Router>

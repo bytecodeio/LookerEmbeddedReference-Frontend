@@ -6,8 +6,9 @@ import React from 'react'
 import { Space } from '@looker/components'
 import styled from "styled-components"
 import { MenuButton } from './MenuButton'
+import { CodeButton } from './CodeButton'
 
-function TopBanner({setMenuToggle,menuToggle}) {
+function TopBanner({setMenuToggle,menuToggle,setCodeToggle,codeToggle}) {
     return (
         <>
             <Space className='top-banner' paddingLeft="20px">
@@ -16,6 +17,7 @@ function TopBanner({setMenuToggle,menuToggle}) {
                 <Header>
                     Embedded Reference Application
                 </Header>
+                <CodeButton setCodeToggle={setCodeToggle} codeToggle={codeToggle} />
             </Space>
         </>
     )

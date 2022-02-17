@@ -22,6 +22,9 @@ module.exports = {
     },
     historyApiFallback: true
   },
+  resolve: {
+    fallback: { "path": require.resolve("path-browserify") }
+  },
   module: {
     rules: [
       {

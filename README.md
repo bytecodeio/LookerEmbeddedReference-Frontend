@@ -51,6 +51,9 @@ You need administartive access to a Looker instance to embed Looker.  By default
    - When prompted, choose to install using the BigQuery connection from step 2
    - Once installed, you can view the dashboard in Looker with the context `/embed/dashboards/data_block_acs_bigquery::acs_census_overview`
 
+### Update the Embed Domain Allowlist
+In Looker, navigate to the Admin -> Platform -> Embed configuration page.  Add the entry 'https://localhost:3001' to the Embed Domain Allowlist.  If you are running the application on an app server, add that server's URI as well. If this URI is misspelled, or has a trailing '/', you will have CORS issues and the app will not function properly.
+
 # Installation
 Before using the frontend server, you'll need to install it.
 

@@ -1,6 +1,9 @@
 # Looker Embed Reference - Frontend 
 
- This application contains examples of embedding Looker.  It is a React application that uses the Looker [Embed SDK](https://docs.looker.com/reference/embed-sdk/embed-sdk-intro) and [Components](https://docs.looker.com/data-modeling/extension-framework/components). It requires running a [backend application](https://github.com/bytecodeio/LookerEmbeddedReference-Backend) to handle API calls safely.  These applications are tightly coupled.
+ This application contains examples of embedding Looker.  It is a React application that uses the Looker [Embed SDK](https://docs.looker.com/reference/embed-sdk/embed-sdk-intro) and [Components](https://docs.looker.com/data-modeling/extension-framework/components). It requires running a backend application to handle API calls safely.  These applications are tightly coupled. There is a node and java version of the backend application.
+ 
+ * [Node Backend Repository](https://github.com/bytecodeio/LookerEmbeddedReference-Backend)
+ * [Java Backend Repository](https://github.com/bytecodeio/LookerEmbeddedReference-Backend-java)
 
  This is intended to be an example application, and shows many different ways of embedding Looker in another site.  It demonstrates several similar ways to inclue a dashboard or visualization, and all of these techniques are valid.  The examples that this application uses come from a 'data block' provided by Looker, using a public data set.  
 

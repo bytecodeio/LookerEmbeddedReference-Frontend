@@ -24,6 +24,16 @@ The frontend server will handle user authentication, navigation, and rendering e
 * explore embedding (*src/components/EmbedExplore*)
 * query embedding (*src/components/EmbedQuery*)
 * embedding multiple iframes (*src/components/EmbedTwoIframes*)
+* Implementing download button (src/components/EmbedDashboardDownload)
+filters outside of iFrame using Looker component library (src/components/DashboardExternalFilters)
+* Implementing schedule button outside of iframe (src/components/EmbedDashboardEvents)
+* Implementing start and Stop button outside of iframe (src/components/EmbedDashboardEvents)
+* Capturing callbacks on user interactions of embedded content  (src/components/EmbedDashboardEvents)
+* Ability to adjust tiles on embedded dashboards  (src/components/EmbedDashboardLayout)
+   * Hiding tiles
+   * Adjusting the colors
+* Looker Visualization Components (src/components/VizComponent)
+
 
 #### Components
 This application relies heavily on [Looker Components](https://developers.looker.com/components/develop).  The Looker Components library allows developers to quickly replicate the polished Looker user experience.  This application uses UI Components in many places.  It also contains examples of the new [Visualization Components](https://github.com/looker-open-source/components/tree/main/packages/visualizations) in the [Visualization Component file](*src/components/VizComponent)

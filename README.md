@@ -12,7 +12,7 @@
 Embedding Looker into a site can involve showing Looker content directly, and/or using the Looker API to interact with Looker.  An embedding website requires hosting, and usually requires a user login.  For companies who don't yet have non-public websites, consider the [Looker Extension Framework](https://cloud.google.com/blog/topics/developers-practitioners/building-looker-made-easier-extension-framework) instead of creating a new website.
 
 ### Basics
-The frontend server (from this repository) serves a static web site.  It relies on a [backend server](https://github.com/bytecodeio/LookerEmbeddedReference-Backend) to communicate securely with Looker.  To show Looker Dashboards or Looks, the frontend server requests a [Signed SSO URL](https://docs.looker.com/reference/embedding/sso-embed) from the backend server.  This URL is then added to an iframe on the site.  Inside the iframe, the dashbaord or Look is served directly from the Looker server. 
+The frontend server (from this repository) serves a static web site.  It relies on a backend server ([node](https://github.com/bytecodeio/LookerEmbeddedReference-Backend), or [java](https://github.com/bytecodeio/LookerEmbeddedReference-Backend-java)) to communicate securely with Looker.  To show Looker Dashboards or Looks, the frontend server requests a [Signed SSO URL](https://docs.looker.com/reference/embedding/sso-embed) from the backend server.  This URL is then added to an iframe on the site.  Inside the iframe, the dashbaord or Look is served directly from the Looker server. 
 
 ### Details
 The frontend server will handle user authentication, navigation, and rendering everything except Looker content.  In most cases, the frontend uses an iframe (inline frame element) to set space aside for Looker content.  Within the iframe, Looker renders and controls the content.  To investigate where these pieces are defined in the code, investigate these files:
@@ -101,7 +101,7 @@ yarn dev
 
 ### Start the backend API server
 
-Follow directions in [the backend repository readme](https://github.com/bytecodeio/LookerEmbeddedReference-Backend#installation) to install, compile and run it.
+Follow directions in the backend repository readme ([node](https://github.com/bytecodeio/LookerEmbeddedReference-Backend#installation-local), or [java](https://github.com/bytecodeio/LookerEmbeddedReference-Backend-Java/blob/main/README.md#installation-local)) to install, compile and run it.
 
 ### Point a browser to:
 
@@ -111,7 +111,7 @@ Change the port from 3001 if you set a different PBL_PORT
 ## Running in Google AppEngine
 
 Instead of running this locally, use Google AppEngine to run it in the cloud.
-Follow the directions in [the backend repository README](https://github.com/bytecodeio/LookerEmbeddedReference-Backend#google-appengine-installation)
+Follow the directions in the backend repository README ([node](https://github.com/bytecodeio/LookerEmbeddedReference-Backend#google-appengine-installation-optional), or [java](https://github.com/bytecodeio/LookerEmbeddedReference-Backend-Java/blob/main/README.md#google-appengine-installation-optional))
 
 
 ### Other resources:

@@ -43,7 +43,7 @@ You need administartive access to a Looker instance to embed Looker.  By default
       - Use the public_datasets schema
       - [Enable Persistent Derived Tables](https://docs.looker.com/setup-and-management/database-config/google-bigquery#creating_a_temporary_dataset_for_persistent_derived_tables) when configuring the connection
    - Test the connection.
-3. [Install the Demographic Data Block](https://docs.looker.com/data-modeling/looker-blocks#data_blocks) via the marketplace in your looker instance
+3. [Install the ASC Demographic Data](https://docs.looker.com/data-modeling/looker-blocks#data_blocks) via the marketplace in your looker instance
    - In your Looker instance, click the [*Marketplace*](https://docs.looker.com/data-modeling/marketplace) icon in the upper right hand corner
    - Click the *Models* menu icon on the left
    - Click on *ASC Demographic Data*

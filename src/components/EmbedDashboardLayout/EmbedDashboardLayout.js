@@ -6,6 +6,7 @@ import { Button, ButtonItem, ButtonToggle, ToggleSwitch, Space } from '@looker/c
 
 // Additional js file that holds static values that will be used in this component
 import { newLayoutComponents, bluePallette } from './constant'
+import { PageTitle } from '../common/PageTitle'
 
 const EmbedDashboardLayout = () => {
   const [dashboard,setDashboard] = React.useState()
@@ -107,7 +108,7 @@ const EmbedDashboardLayout = () => {
 
   return (
     <>
-          <PageTitle>Dashboard Layout</PageTitle>
+          <PageTitle text={'Dashboard Layout'} />
           {/* Elements that contain the toggles for the Layouts and the vis_config color changes*/}
           <ToggleArea>
             <ButtonToggle value={toggleSelection} onChange={setToggleSelection}>
@@ -140,7 +141,7 @@ const ToggleArea = styled.div
 
 const Dashboard = styled.div`
   width: 100%;
-  height: 80vh;
+  height: 75vh;
   & > iframe {
     width: 100%;
     height: 100%;
@@ -153,12 +154,4 @@ const BlueIcon = styled.span`
   border-radius:50%;
 `
 
-const PageTitle = styled.div`
-  font-family: "Google Sans", "Open Sans", Arial, Helvetica, sans-serif;
-  font-size: 26px;
-  color: #5F6368;
-  font-weight: 200;
-  margin-left: 3rem;
-  }
-`
 export default EmbedDashboardLayout

@@ -1164,6 +1164,13 @@
   dependencies:
     "@looker/chatty" "^2.3.0"
 
+"@looker/icons@^1.5.14":
+  version "1.5.14"
+  resolved "https://registry.yarnpkg.com/@looker/icons/-/icons-1.5.14.tgz#732437d7cc19b71ed97128a492bf393984457505"
+  integrity sha512-4rNI/9OZaHiiS8bG3tZmxJxJbrSxanlbGDpzOr0yq0tttCqLSTZ1sltGJ0IZ7tnXJVP9sp3SYImhE3WiC2F7nw==
+  dependencies:
+    "@styled-icons/styled-icon" "^10.6.3"
+
 "@looker/sdk-rtl@21.3.1", "@looker/sdk-rtl@^21.0.20":
   version "21.3.1"
   resolved "https://registry.yarnpkg.com/@looker/sdk-rtl/-/sdk-rtl-21.3.1.tgz#ff860249959ccf12a9f48d3c79267113e61724d1"

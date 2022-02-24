@@ -17,6 +17,7 @@ import { Query, Visualization } from '@looker/visualizations'
 import { Space } from '@looker/components'
 import { sampleQuery } from './sampleQuery'
 import styled from 'styled-components'
+import { PageTitle } from '../common/PageTitle'
 
 const EmbedComponent = (props) => {
   // Add a variables to state
@@ -35,7 +36,8 @@ const EmbedComponent = (props) => {
 
   return (
     <Space>
-      <div className={"embed-dashboard-main"}><PageTitle>Visualization Component</PageTitle>
+      <div className={"embed-dashboard-main"}>
+        <PageTitle text={'Visualization Component'} />
         {queryId > 0 ? null : <PageTitle>Generating a new query, please wait.</PageTitle>}
         <Query sdk={sdk} query={queryId}>
           <Visualization />
@@ -44,14 +46,5 @@ const EmbedComponent = (props) => {
     </Space>
   )
 }
-
-const PageTitle = styled.div`
-  font-family: "Google Sans", "Open Sans", Arial, Helvetica, sans-serif;
-  font-size: 26px;
-  color: #5F6368;
-  font-weight: 200;
-  margin-left: 3rem;
-  }
-`
 
 export default EmbedComponent

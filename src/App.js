@@ -31,47 +31,56 @@ const routes =
     {
       url: '/embed-dashboard',
       text: 'Embedded Dashboard',
-      component: (<EmbedDashboard />)
+      component: (<EmbedDashboard />),
+      path: 'EmbedDashboard/EmbedDashboard.js'
     },
     {
       url: '/embed-explore',
       text: 'Embedded Explore',
-      component: (<EmbedExplore />)
+      component: (<EmbedExplore />),
+      path: 'EmbedExplore/EmbedExplore.js'
     },
     {
       url: '/embed-query',
       text: 'Embedded Query',
-      component: (<EmbedQuery />)
+      component: (<EmbedQuery />),
+      path: 'EmbedQuery/EmbedQuery.js'
     },
     {
       url: '/viz-component',
       text: 'Visualization Component',
-      component: (<VizComponent />)
+      component: (<VizComponent />),
+      path: 'VizComponent/VizComponent.js'
     },
     {
       url: '/viz-component-w-filter',
       text: 'Visualization Component + Filter',
-      component: (<VizComponentWFilter />)
+      component: (<VizComponentWFilter />),
+      path: 'VizComponent/VizComponentWFilter.js'
     },
     {
       url: '/dashboard-events',
       text: 'JavaScript Events',
-      component: (<EmbedDashboardEvents />)
+      component: (<EmbedDashboardEvents />),
+      path: 'EmbedDashboardEvents/EmbedDashboardEvents.js'
     },
     {
       url: '/multiple-embeds',
       text: 'Multiple Embeds',
-      component: (<EmbedTwoIframes />)
+      component: (<EmbedTwoIframes />),
+      path: 'EmbedTwoIframes/EmbedTwoIframes.js'
     },
     {
       url: '/dashboard-layout',
       text: 'Dynamic Dashboard Layout',
-      component: (<EmbedDashboardLayout />)
+      component: (<EmbedDashboardLayout />),
+      path: 'EmbedDashboardLayout/EmbedDashboardLayout.js'
     },
     {
       url: '/dashboard-download',
       text: 'Dashboard Download',
-      component: (<EmbedDashboardDownload />)
+      component: (<EmbedDashboardDownload />),
+      path: 'EmbedDashboardDownload/EmbedDashboardDownload.js'
     },
     // Uncomment the code below to add an additional route to an embedded Look.
     // {
@@ -107,7 +116,7 @@ function App() {
 
             {routes.examples.map(e => {
               return (
-                <Route path={e.url} default element={<Container content={e.component} />} key={e.text} />
+                <Route path={e.url} default element={<Container content={e.component} path={e.path} />} key={e.text} />
               )
             })
             }

@@ -22,6 +22,7 @@ import { Query, Visualization } from '@looker/visualizations'
 import { Space, SpaceVertical, FieldRangeSlider } from '@looker/components'
 import { sampleQuery } from './sampleQuery'
 import styled from 'styled-components'
+import { PageTitle } from '../common/PageTitle'
 
 const EmbedComponent = (props) => {
   // Add 2 variables to state, so that the user controls the population passed in the query
@@ -44,7 +45,7 @@ const EmbedComponent = (props) => {
     <Space>
       <div className={"embed-dashboard-main"}>
         <SpaceVertical gap={'large'}>
-          <PageTitle>Visualization Component With Filter</PageTitle>
+          <PageTitle text={'Visualization Component With Filter'} />
           <FieldRangeSlider 
             label={"Population Filter:"} 
             min={0} 
@@ -60,14 +61,5 @@ const EmbedComponent = (props) => {
     </Space>
   )
 }
-
-const PageTitle = styled.div`
-  font-family: "Google Sans", "Open Sans", Arial, Helvetica, sans-serif;
-  font-size: 26px;
-  color: #5F6368;
-  font-weight: 200;
-  margin-left: 3rem;
-  }
-`
 
 export default EmbedComponent

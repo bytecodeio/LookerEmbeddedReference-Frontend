@@ -2,14 +2,17 @@ import React, { useCallback, useEffect }  from 'react'
 import styled from "styled-components"
 //Alias an additional import of the embed sdk
 import { LookerEmbedDashboard, LookerEmbedSDK, LookerEmbedSDK as LookerEmbedSDK2 } from '@looker/embed-sdk'
-import { Button, ButtonItem, ButtonToggle, ToggleSwitch, Space } from '@looker/components'
+import { Button, ButtonItem, ButtonToggle, ToggleSwitch, Space, Spinner } from '@looker/components'
 import { sdk } from '../../helpers/CorsSessionHelper'
+import { PageTitle } from '../common/PageTitle'
 
 const EmbedDashboardDownload = () => {
+  const [loading, setLoading] = React.useState(false)
 
   // Function that downloads the Dashboard into a PDF
   const handleDownload =  async () => {
     try {
+      setLoading(true);
       // Starts by creating a dashboard render task with the dashboard ID, result format and height/width
       // https://docs.looker.com/reference/api-and-integration/api-reference/v4.0/render-task#create_dashboard_render_task
       let response = await sdk.ok(sdk.create_dashboard_render_task(
@@ -41,7 +44,9 @@ const EmbedDashboardDownload = () => {
       // Create a url to open the blob in another tab
       const pdfUrl = URL.createObjectURL(blob);
       window.open(pdfUrl, '_blank');
+      setLoading(false)
     } catch (error) {
+      setLoading(false)
       console.log(error)
     }
 
@@ -79,10 +84,16 @@ const EmbedDashboardDownload = () => {
 
   return (
     <>
-          <PageTitle>Dashboard Download</PageTitle>
+          <PageTitle text={'Dashboard Download'} />
           <Space>
             {/* Create a button that initializes the function that downloads the Dashboard */}
             <Button onClick={handleDownload}>Download</Button>
+            {loading &&
+            <>
+              <Spinner />
+              <h4>Downloading...</h4>
+            </>
+            }
           </Space>
           { /* Step 0 - we have a simple container, which performs a callback to our makeDashboard function */}
           <Dashboard ref={makeDashboard}></Dashboard>
@@ -92,19 +103,11 @@ const EmbedDashboardDownload = () => {
 
 const Dashboard = styled.div`
   width: 100%;
-  height: 85vh;
+  height: 80vh;
   & > iframe {
     width: 100%;
     height: 100%;
   }
 ` 
 
-const PageTitle = styled.div`
-  font-family: "Google Sans", "Open Sans", Arial, Helvetica, sans-serif;
-  font-size: 26px;
-  color: #5F6368;
-  font-weight: 200;
-  margin-left: 3rem;
-  }
-`
 export default EmbedDashboardDownload

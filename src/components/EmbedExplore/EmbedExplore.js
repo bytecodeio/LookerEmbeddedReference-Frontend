@@ -4,6 +4,7 @@
 import React, { useCallback } from 'react'
 import styled from "styled-components"
 import { LookerEmbedSDK } from '@looker/embed-sdk'
+import { PageTitle } from '../common/PageTitle'
 
 /**
    * First initialized the embed sdk using the endpoint in /backend/routes/api.js
@@ -38,7 +39,7 @@ const EmbedExplore = () => {
   return (
     <>
       <div className='stuff' style={{width: '100%', height: '100%'}}>
-        <PageTitle>Embedded Explore</PageTitle>
+        <PageTitle text={'Embedded Explore'} />
         { /* Step 0 we have a simple container, which performs a callback to our createExplore function */}
         <Explore ref={createExplore}></Explore>
       </div>
@@ -48,20 +49,11 @@ const EmbedExplore = () => {
 
 const Explore = styled.div`
   width: 100%;
-  height: 85vh;
+  height: 80vh;
   & > iframe {
     width: 100%;
     height: 100%;
   }
 ` 
-
-const PageTitle = styled.div`
-  font-family: "Google Sans", "Open Sans", Arial, Helvetica, sans-serif;
-  font-size: 26px;
-  color: #5F6368;
-  font-weight: 200;
-  margin-left: 3rem;
-  }
-`
 
 export default EmbedExplore

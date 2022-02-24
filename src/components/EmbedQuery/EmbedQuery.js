@@ -6,6 +6,7 @@ import React, { useCallback } from 'react'
 import styled from "styled-components"
 import { LookerEmbedSDK } from '@looker/embed-sdk'
 import { Space } from '@looker/components'
+import { PageTitle } from '../common/PageTitle'
 
 const EmbedQuery = () => {
   /*
@@ -55,7 +56,7 @@ const EmbedQuery = () => {
   return (
     <Space>
       <div className={"embed-dashboard-main"}>
-        <PageTitle >Embedded Query</PageTitle>
+        <PageTitle text={'Embedded Query'} />
         { /* Step 0 we have a simple container, which performs a callback to our showVisualization function */}
         <Query ref={showVisualization}></Query>
       </div>
@@ -66,19 +67,10 @@ const EmbedQuery = () => {
 // A little bit of style here for heights and widths.
 const Query = styled.div`
   width: 100%;
-  height: 85vh;
+  height: 80vh;
   & > iframe {
     width: 100%;
     height: 100%;
-  }
-`
-
-const PageTitle = styled.div`
-  font-family: "Google Sans", "Open Sans", Arial, Helvetica, sans-serif;
-  font-size: 26px;
-  color: #5F6368;
-  font-weight: 200;
-  margin-left: 3rem;
   }
 `
 export default EmbedQuery

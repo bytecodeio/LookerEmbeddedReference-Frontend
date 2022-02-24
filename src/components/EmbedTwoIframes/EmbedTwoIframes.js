@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Accordion2, Accordion, AccordionDisclosure, Space } from '@looker/components'
 //Alias an additional import of the embed sdk
 import { LookerEmbedSDK, LookerEmbedSDK as LookerEmbedSDK2 } from '@looker/embed-sdk'
+import { PageTitle } from '../common/PageTitle'
 
 const EmbedTwoIframes = () => {
 
@@ -72,7 +73,7 @@ const EmbedTwoIframes = () => {
 
   return (
     <>
-          <PageTitle>Multiple Embeds</PageTitle>
+          <PageTitle text={'Multiple Embeds'} />
           <Accordion2 indicatorPosition="left" label='Dashboard'>
           { /* Step 0b - we have a simple container, which performs a callback to our makeDashboard function */}
             <Dashboard ref={makeDashboard}></Dashboard>
@@ -91,7 +92,7 @@ const EmbedTwoIframes = () => {
 
 const Dashboard = styled.div`
   width: 100%;
-  height: 50vh;
+  height: 45vh;
   & > iframe {
     width: 100%;
     height: 100%;
@@ -106,13 +107,4 @@ const Query = styled.div`
     height: 100%;
   }
 ` 
-
-const PageTitle = styled.div`
-  font-family: "Google Sans", "Open Sans", Arial, Helvetica, sans-serif;
-  font-size: 26px;
-  color: #5F6368;
-  font-weight: 200;
-  margin-left: 3rem;
-  }
-`
 export default EmbedTwoIframes

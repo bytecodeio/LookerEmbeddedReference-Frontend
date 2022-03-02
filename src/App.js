@@ -24,6 +24,7 @@ import EmbedTwoIframes from "./components/EmbedTwoIframes/EmbedTwoIframes";
 import EmbedDashboardLayout from "./components/EmbedDashboardLayout/EmbedDashboardLayout";
 import EmbedDashboardDownload from "./components/EmbedDashboardDownload/EmbedDashboardDownload";
 import SSOUrlTester from "./components/SSOUrlTester/SSOUrlTester";
+import EmbedDashboardWFilters from './components/EmbedDashboardWFilters/EmbedDashboardWFilters'
 
 const routes = {
   title: "Embed Examples",
@@ -35,10 +36,16 @@ const routes = {
       path: "EmbedDashboard/EmbedDashboard.js",
     },
     {
-      url: "/embed-explore",
-      text: "Embedded Explore",
-      component: <EmbedExplore />,
-      path: "EmbedExplore/EmbedExplore.js",
+      url: '/embed-dashboard-with-filters',
+      text: 'Embedded Dashboard With Filters',
+      component: (<EmbedDashboardWFilters />),
+      path: 'EmbedDashboard/EmbedDashboard.js'
+    },
+    {
+      url: '/embed-explore',
+      text: 'Embedded Explore',
+      component: (<EmbedExplore />),
+      path: 'EmbedExplore/EmbedExplore.js'
     },
     {
       url: "/embed-query",

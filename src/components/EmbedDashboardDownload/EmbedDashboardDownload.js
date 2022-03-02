@@ -5,14 +5,16 @@ import { LookerEmbedDashboard, LookerEmbedSDK, LookerEmbedSDK as LookerEmbedSDK2
 import { Button, ButtonItem, ButtonToggle, ToggleSwitch, Space, Spinner } from '@looker/components'
 import { sdk } from '../../helpers/CorsSessionHelper'
 import { PageTitle } from '../common/PageTitle'
+import { LoadingSpinner } from '../common/LoadingSpinner'
 
 const EmbedDashboardDownload = () => {
-  const [loading, setLoading] = React.useState(false)
+  const [loading, setLoading] = React.useState(true)
+  const [loadingDownload, setLoadingDownload] = React.useState(false)
 
   // Function that downloads the Dashboard into a PDF
   const handleDownload =  async () => {
     try {
-      setLoading(true);
+      setLoadingDownload(true);
       // Starts by creating a dashboard render task with the dashboard ID, result format and height/width
       // https://docs.looker.com/reference/api-and-integration/api-reference/v4.0/render-task#create_dashboard_render_task
       let response = await sdk.ok(sdk.create_dashboard_render_task(
@@ -44,9 +46,9 @@ const EmbedDashboardDownload = () => {
       // Create a url to open the blob in another tab
       const pdfUrl = URL.createObjectURL(blob);
       window.open(pdfUrl, '_blank');
-      setLoading(false)
+      setLoadingDownload(false)
     } catch (error) {
-      setLoading(false)
+      setLoadingDownload(false)
       console.log(error)
     }
 
@@ -75,6 +77,7 @@ const EmbedDashboardDownload = () => {
       .build()
       // this establishes event communication between the iframe and parent page
       .connect()
+      .then(() => setLoading(false))
       // catch various errors which can occur in the process (note: does not catch 404 on content)
       .catch((error) => {
         console.error('An unexpected error occurred', error)
@@ -88,13 +91,14 @@ const EmbedDashboardDownload = () => {
           <Space>
             {/* Create a button that initializes the function that downloads the Dashboard */}
             <Button onClick={handleDownload}>Download</Button>
-            {loading &&
+            {loadingDownload &&
             <>
               <Spinner />
               <h4>Downloading...</h4>
             </>
             }
           </Space>
+          <LoadingSpinner loading={loading}/>
           { /* Step 0 - we have a simple container, which performs a callback to our makeDashboard function */}
           <Dashboard ref={makeDashboard}></Dashboard>
     </>

@@ -1,8 +1,9 @@
 export const newLayoutComponents = [
   {
-    id: "6dea5eaa44a41c49dff3671b90779174",
+    // Total Population
+    id: "9a25e5117861811d218574501b928d08",
     dashboard_layout_id: null,
-    dashboard_element_id: "6dea5eaa44a41c49dff3671b90779174",
+    dashboard_element_id: "9a25e5117861811d218574501b928d08",
     row: 0,
     column: 5,
     width: 14,
@@ -10,9 +11,10 @@ export const newLayoutComponents = [
     deleted: false,
   },
   {
-    id: "92f9b48cec1a46b025e4a04d96d7a2f3",
+    // Gender
+    id: "ebd76278739d31315c13830811819f8a",
     dashboard_layout_id: null,
-    dashboard_element_id: "92f9b48cec1a46b025e4a04d96d7a2f3",
+    dashboard_element_id: "ebd76278739d31315c13830811819f8a",
     row: 3,
     column: 0,
     width: 8,
@@ -20,9 +22,10 @@ export const newLayoutComponents = [
     deleted: false,
   },
   {
-    id: "4c4c2ddcc7a34a8798da46341f13d61f",
+    // Race
+    id: "706a0bdd8337601d7b80280ee230776e",    
     dashboard_layout_id: null,
-    dashboard_element_id: "4c4c2ddcc7a34a8798da46341f13d61f",
+    dashboard_element_id: "706a0bdd8337601d7b80280ee230776e",
     row: 22,
     column: 0,
     width: 12,
@@ -30,9 +33,10 @@ export const newLayoutComponents = [
     deleted: false,
   },
   {
-    id: "80bc0788621dff5fbee3993a2667d456",
+    //Education
+    id: "f6c7c27e725dde95253579346d066559",
     dashboard_layout_id: null,
-    dashboard_element_id: "80bc0788621dff5fbee3993a2667d456",
+    dashboard_element_id: "f6c7c27e725dde95253579346d066559",
     row: 3,
     column: 8,
     width: 8,
@@ -40,9 +44,10 @@ export const newLayoutComponents = [
     deleted: false,
   },
   {
-    id: "78a7416ad175bf50857d3e9de55f0610",
+    // Percent of Income Spent on Rent by State
+    id: "41364e74cdb03c2032cbc3b62920febf",
     dashboard_layout_id: null,
-    dashboard_element_id: "78a7416ad175bf50857d3e9de55f0610",
+    dashboard_element_id: "41364e74cdb03c2032cbc3b62920febf",
     row: 3,
     column: 16,
     width: 8,
@@ -50,9 +55,10 @@ export const newLayoutComponents = [
     deleted: false,
   },
   {
-    id: "71033d571917797d45927d87b12ac354",
+    // Household Median Income & Per-Capita Income by State
+    id: "ab6f1f15fc742936f24af78decbd5455",
     dashboard_layout_id: null,
-    dashboard_element_id: "71033d571917797d45927d87b12ac354",
+    dashboard_element_id: "ab6f1f15fc742936f24af78decbd5455",
     row: 31,
     column: 12,
     width: 12,
@@ -60,9 +66,10 @@ export const newLayoutComponents = [
     deleted: false,
   },
   {
-    id: "730e892bb4f142542673492851b6c8cd",
+    // Commute Time Vs Median Income by County
+    id: "4b335db099c6968389af8a69fea1144b",
     dashboard_layout_id: null,
-    dashboard_element_id: "730e892bb4f142542673492851b6c8cd",
+    dashboard_element_id: "4b335db099c6968389af8a69fea1144b",
     row: 22,
     column: 12,
     width: 12,
@@ -70,9 +77,10 @@ export const newLayoutComponents = [
     deleted: false,
   },
   {
-    id: "892494557fbcfdcbc0aa1c4aeeb753b3",
+    // Employed Vs Unemployed Population by State
+    id: "ba563b0321362ca45873a5b1ad9f3ef0",
     dashboard_layout_id: null,
-    dashboard_element_id: "892494557fbcfdcbc0aa1c4aeeb753b3",
+    dashboard_element_id: "ba563b0321362ca45873a5b1ad9f3ef0",
     row: 13,
     column: 0,
     width: 12,
@@ -83,13 +91,13 @@ export const newLayoutComponents = [
 
 export const bluePallette = [
   {
-    id: "6dea5eaa44a41c49dff3671b90779174",
+    id: "9a25e5117861811d218574501b928d08",
     vis_config: {
       custom_color: "#4276BE",
     },
   },
   {
-    id: "92f9b48cec1a46b025e4a04d96d7a2f3",
+    id: "ebd76278739d31315c13830811819f8a",
     vis_config: {
       series_colors: {
         "blockgroup.female_pop": "#0a1159",
@@ -98,7 +106,7 @@ export const bluePallette = [
     },
   },
   {
-    id: "80bc0788621dff5fbee3993a2667d456",
+    id: "41364e74cdb03c2032cbc3b62920febf",
     vis_config: {
       series_colors: {
         "blockgroup.white_pop": "#0a1159",
@@ -111,7 +119,7 @@ export const bluePallette = [
     },
   },
   {
-    id: "78a7416ad175bf50857d3e9de55f0610",
+    id: "f6c7c27e725dde95253579346d066559",
     vis_config: {
       series_colors: {
         "blockgroup.masters_degree": "#0a1159",
@@ -124,7 +132,7 @@ export const bluePallette = [
     },
   },
   {
-    id: "892494557fbcfdcbc0aa1c4aeeb753b3",
+    id: "706a0bdd8337601d7b80280ee230776e",
     vis_config: {
       series_colors: {
         "state.state_percent_income_spent_on_rent": "#0a1159",
@@ -133,7 +141,7 @@ export const bluePallette = [
     },
   },
   {
-    id: "4c4c2ddcc7a34a8798da46341f13d61f",
+    id: "ab6f1f15fc742936f24af78decbd5455",
     vis_config: {
       series_colors: {
         "state.state_median_income": "#0a1159",
@@ -142,7 +150,7 @@ export const bluePallette = [
     },
   },
   {
-    id: "71033d571917797d45927d87b12ac354",
+    id: "ba563b0321362ca45873a5b1ad9f3ef0",
     vis_config: {
       series_colors: {
         "blockgroup.employed_pop": "#5188bf",
@@ -151,31 +159,31 @@ export const bluePallette = [
     },
   },
   {
-    id: "68de526333bf14aff72cca35d17c2157",
+    id: "ab158b5edf21673cf2ce22f9f5fc33f0",
     vis_config: {
       map_value_colors: ["#0a1159", "#b3e2f7"],
     },
   },
   {
-    id: "92bfc3c762bcea17abf1030173d64bb6",
+    id: "1e129b695870a7212f35b9c4eb2fe7c7",
     vis_config: {
       map_value_colors: ["#0a1159", "#b3e2f7"],
     },
   },
   {
-    id: "a07c95e32a2b16dd854252022f4b4400",
+    id: "42e1631e732bd16c5f647511f986d6b6",
     vis_config: {
       map_value_colors: ["#0a1159", "#b3e2f7"],
     },
   },
   {
-    id: "93d6ab1af0f91075ae43f3ed8e20d125",
+    id: "74385e207fdf4e7b12c9036719ac762b",
     vis_config: {
       map_value_colors: ["#0a1159", "#b3e2f7"],
     },
   },
   {
-    id: "e502982721706a690da51073e80f278d",
+    id: "d3db31621cb046736c7a37ebd46fb312",
     vis_config: {
       map_value_colors: ["#0a1159", "#b3e2f7"],
     },

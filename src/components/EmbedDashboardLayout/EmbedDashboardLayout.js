@@ -10,8 +10,10 @@ import { ButtonItem, ButtonToggle } from "@looker/components";
 // Additional js file that holds static values that will be used in this component
 import { newLayoutComponents, bluePallette, defaultPallette } from "./constant";
 import { PageTitle } from "../common/PageTitle";
+import { LoadingSpinner } from '../common/LoadingSpinner'
 
 const EmbedDashboardLayout = () => {
+  const [loading, setLoading] = React.useState(true)
   const [dashboard, setDashboard] = React.useState();
   const [dashboardOptions, setDashboardOptions] = React.useState();
   const [originalLayout, setOriginalLayout] = React.useState();
@@ -30,6 +32,7 @@ const EmbedDashboardLayout = () => {
       setOriginalLayout(
         event.dashboard.options.layouts[0].dashboard_layout_components
       );
+      console.log(event.dashboard.options)
     }
     // Sets dashboard options for everytime the "dashboard:run:complete" event is triggered
     setDashboardOptions(event.dashboard.options);
@@ -38,6 +41,7 @@ const EmbedDashboardLayout = () => {
   // Sets the dashboard state
   const setupDashboard = (dashboard) => {
     setDashboard(dashboard);
+    setLoading(false)
   };
 
   // Function that hides the elements that have map visualizations in the dashboard layout
@@ -140,6 +144,7 @@ const EmbedDashboardLayout = () => {
           </ButtonItem>
         </ButtonToggle>
       </ToggleArea>
+      <LoadingSpinner loading={loading}/>
       {/* Step 0 - we have a simple container, which performs a callback to our makeDashboard function */}
       <Dashboard ref={makeDashboard}></Dashboard>
     </>

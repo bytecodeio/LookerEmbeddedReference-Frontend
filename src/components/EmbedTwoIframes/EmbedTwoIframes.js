@@ -12,8 +12,10 @@ import {
   LookerEmbedSDK as LookerEmbedSDK2,
 } from "@looker/embed-sdk";
 import { PageTitle } from "../common/PageTitle";
+import { LoadingSpinner } from '../common/LoadingSpinner'
 
 const EmbedTwoIframes = () => {
+  const [loading, setLoading] = React.useState(true)
   // Create a variable to hold the Embed Host
   const hostUrl = process.env.LOOKERSDK_EMBED_HOST;
 
@@ -48,6 +50,7 @@ const EmbedTwoIframes = () => {
       .build()
       // this establishes event communication between the iframe and parent page
       .connect()
+      .then(() => setLoading(false))
       // catch various errors which can occur in the process (note: does not catch 404 on content)
       .catch((error) => {
         console.error("An unexpected error occurred", error);
@@ -82,6 +85,7 @@ const EmbedTwoIframes = () => {
   return (
     <>
       <PageTitle text={"Multiple Embeds"} />
+      <LoadingSpinner loading={loading}/>
       <Accordion2 indicatorPosition="left" label="Dashboard">
         {/* Step 0b - we have a simple container, which performs a callback to our makeDashboard function */}
         <Dashboard ref={makeDashboard}></Dashboard>

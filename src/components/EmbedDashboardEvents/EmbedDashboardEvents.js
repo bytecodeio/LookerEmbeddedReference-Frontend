@@ -11,9 +11,10 @@ import styled from "styled-components"
 import { LookerEmbedSDK } from '@looker/embed-sdk'
 import { Space, Link, SpaceVertical } from '@looker/components'
 import { PageTitle } from '../common/PageTitle'
+import { LoadingSpinner } from '../common/LoadingSpinner'
 
 const EmbedDashboardEvents = () => {
-
+  const [loading, setLoading] = React.useState(true)
   // This variable will hold a reference to the dashboard, so we can send messages to it
   let dashboardRef;
 
@@ -57,7 +58,7 @@ const EmbedDashboardEvents = () => {
       .connect()
       // This takes the dashboard's reference and assigns it to a variable defined earlier.
       // It will be used for sending JavaScript events to the dashboard iframe.
-      .then(x => dashboardRef = x)
+      .then((x) => {dashboardRef = x;setLoading(false)})
       // catch various errors which can occur in the process (note: does not catch 404 on content)
       .catch((error) => {
         console.error('An unexpected error occurred', error)
@@ -83,6 +84,7 @@ const EmbedDashboardEvents = () => {
             <Button onClick={() => dashboardRef.stop()}>Stop</Button>
             <Button onClick={() => dashboardRef.openScheduleDialog()}>Schedule</Button>
           </Space>
+          <LoadingSpinner loading={loading}/>
           { /* Step 0) we have a simple container, which performs a callback to our makeDashboard function */}
           <Dashboard ref={makeDashboard}></Dashboard>
         </SpaceVertical>

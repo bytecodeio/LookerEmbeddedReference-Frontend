@@ -5,6 +5,7 @@ import React, { useCallback } from 'react'
 import styled from "styled-components"
 import { LookerEmbedSDK } from '@looker/embed-sdk'
 import { PageTitle } from '../common/PageTitle'
+import { LoadingSpinner } from '../common/LoadingSpinner'
 
 /**
    * First initialized the embed sdk using the endpoint in /backend/routes/api.js
@@ -12,6 +13,7 @@ import { PageTitle } from '../common/PageTitle'
 
 
 const EmbedExplore = () => {
+  const [loading, setLoading] = React.useState(true)
     /*
    Step 1 Initialization of the EmbedSDK happens when the user first access the application
    See App.js for reference
@@ -31,6 +33,7 @@ const EmbedExplore = () => {
     .build()
     // this establishes event communication between the iframe and parent page
     .connect()
+    .then(() => setLoading(false))
     // catch various errors which can occur in the process (note: does not catch 404 on content)
     .catch((error) => {
       console.error('An unexpected error occurred', error)
@@ -40,6 +43,7 @@ const EmbedExplore = () => {
     <>
       <div className='stuff' style={{width: '100%', height: '100%'}}>
         <PageTitle text={'Embedded Explore'} />
+        <LoadingSpinner loading={loading}/>
         { /* Step 0 we have a simple container, which performs a callback to our createExplore function */}
         <Explore ref={createExplore}></Explore>
       </div>

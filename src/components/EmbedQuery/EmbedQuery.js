@@ -7,8 +7,10 @@ import styled from "styled-components"
 import { LookerEmbedSDK } from '@looker/embed-sdk'
 import { Space } from '@looker/components'
 import { PageTitle } from '../common/PageTitle'
+import { LoadingSpinner } from '../common/LoadingSpinner'
 
 const EmbedQuery = () => {
+  const [loading, setLoading] = React.useState(true)
   /*
    Step 1 Initialization of the EmbedSDK happens when the user first access the application
    See App.js for reference
@@ -45,6 +47,7 @@ const EmbedQuery = () => {
         .build()
         // this establishes event communication between the iframe and parent page
         .connect()
+        .then(() => setLoading(false))
         // catch various errors which can occur in the process (note: does not catch 404 on content)
         .catch((error) => {
           console.error('An unexpected error occurred', error)
@@ -57,6 +60,7 @@ const EmbedQuery = () => {
     <Space>
       <div className={"embed-dashboard-main"}>
         <PageTitle text={'Embedded Query'} />
+        <LoadingSpinner loading={loading}/>
         { /* Step 0 we have a simple container, which performs a callback to our showVisualization function */}
         <Query ref={showVisualization}></Query>
       </div>

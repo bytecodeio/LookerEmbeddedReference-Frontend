@@ -39,7 +39,7 @@ const routes = {
       url: '/embed-dashboard-with-filters',
       text: 'Embedded Dashboard With Filters',
       component: (<EmbedDashboardWFilters />),
-      path: 'EmbedDashboard/EmbedDashboard.js'
+      path: 'EmbedDashboardWFilters/EmbedDashboardWFilters.js'
     },
     {
       url: '/embed-explore',

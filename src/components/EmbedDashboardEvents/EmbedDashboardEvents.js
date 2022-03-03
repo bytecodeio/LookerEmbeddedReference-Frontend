@@ -112,7 +112,7 @@ margin-left: 3rem;
 }
 `
 const Button = styled.button`
-background: rgb(66, 133, 244); 
+background: rgb(26, 115, 232); 
 border: 1px solid rgb(66, 133, 244);
 padding: 0px 1.5rem;
 -webkit-box-align: center;
@@ -124,6 +124,7 @@ font-weight: 500;
 justify-content: center;
 line-height: 1;
 font-size: 0.875rem;
-height: 36px
+height: 36px;
+color:white;
 `
 export default EmbedDashboardEvents

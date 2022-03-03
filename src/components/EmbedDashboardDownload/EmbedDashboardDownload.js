@@ -2,7 +2,7 @@ import React, { useCallback, useEffect }  from 'react'
 import styled from "styled-components"
 //Alias an additional import of the embed sdk
 import { LookerEmbedDashboard, LookerEmbedSDK, LookerEmbedSDK as LookerEmbedSDK2 } from '@looker/embed-sdk'
-import { Button, ButtonItem, ButtonToggle, ToggleSwitch, Space, Spinner } from '@looker/components'
+import { ButtonItem, ButtonToggle, ToggleSwitch, Space, Spinner } from '@looker/components'
 import { sdk } from '../../helpers/CorsSessionHelper'
 import { PageTitle } from '../common/PageTitle'
 import { LoadingSpinner } from '../common/LoadingSpinner'
@@ -113,5 +113,22 @@ const Dashboard = styled.div`
     height: 100%;
   }
 ` 
+
+const Button = styled.button`
+background: rgb(26, 115, 232); 
+border: 1px solid rgb(66, 133, 244);
+padding: 0px 1.5rem;
+-webkit-box-align: center;
+align-items: center;
+border-radius: 5px; 
+cursor: pointer;
+font-weight: 500;
+-webkit-box-pack: center;
+justify-content: center;
+line-height: 1;
+font-size: 0.875rem;
+height: 36px;
+color:white;
+`
 
 export default EmbedDashboardDownload

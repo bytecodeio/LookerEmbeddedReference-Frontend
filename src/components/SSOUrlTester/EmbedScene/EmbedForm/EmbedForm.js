@@ -24,7 +24,6 @@
 
  */
 import {
-  Button,
   FieldChips,
   FieldSelectMulti,
   Fieldset,
@@ -33,6 +32,7 @@ import {
   Link,
 } from "@looker/components";
 import React, { useState } from "react";
+import styled from "styled-components"
 
 /**
  * A form for submitting a dynamic URL signing request the backend
@@ -177,3 +177,20 @@ export const EmbedForm = ({ authRequest, setAuthRequest, setEmbedUrl }) => {
     </Form>
   );
 };
+
+const Button = styled.button`
+background: rgb(26, 115, 232); 
+border: 1px solid rgb(66, 133, 244);
+padding: 0px 1.5rem;
+-webkit-box-align: center;
+align-items: center;
+border-radius: 5px; 
+cursor: pointer;
+font-weight: 500;
+-webkit-box-pack: center;
+justify-content: center;
+line-height: 1;
+font-size: 0.875rem;
+height: 36px;
+color:white;
+`

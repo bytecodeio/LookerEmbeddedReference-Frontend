@@ -4,7 +4,7 @@
 import React, { useCallback, useEffect } from "react";
 import styled from "styled-components";
 import { LookerEmbedSDK } from "@looker/embed-sdk";
-import { Space } from "@looker/components";
+import { Space, SpaceVertical } from "@looker/components";
 import { PageTitle } from "../common/PageTitle";
 import { LoadingSpinner } from "../common/LoadingSpinner";
 import { sdk } from "../../helpers/CorsSessionHelper";
@@ -86,16 +86,18 @@ const EmbedDashboardWFilters = () => {
         <PageTitle text={"Embedded Dashboard With Filters"} />
         <LoadingSpinner loading={loading} />
         <ComponentsProvider resources={i18nResources}>
-          {dashboardFilters?.map((filter) => {
-            return (
-              <DashFilters
-                filter={filter}
-                expression={filterValues[filter.name]}
-                onChange={(event) => handleFilterChange(event, filter.name)}
-                key={filter.id}
-              />
-            );
-          })}
+          <Space m="u3" align="end">
+            {dashboardFilters?.map((filter) => {
+              return (
+                <DashFilters
+                  filter={filter}
+                  expression={filterValues[filter.name]}
+                  onChange={(event) => handleFilterChange(event, filter.name)}
+                  key={filter.id}
+                />
+              );
+            })}
+          </Space>
         </ComponentsProvider>
         {/* Step 0) we have a simple container, which performs a callback to our makeDashboard function */}
         <Dashboard ref={makeDashboard}></Dashboard>
@@ -131,8 +133,19 @@ export const DashFilters = ({ filter, expression, onChange }) => {
     sdk,
   });
 
+  const FilterLabel = styled.span`
+    font-family: inherit;
+    margin: 0px;
+    padding: 0px;
+    color: rgb(64, 70, 75);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding-bottom: 0.25rem;
+  `;
+
   return (
-    <>
+    <SpaceVertical gap="u0" width="auto">
+      <FilterLabel>{filter.name}</FilterLabel>
       <Filter
         name={filter.name}
         type={filter.type}
@@ -140,6 +153,6 @@ export const DashFilters = ({ filter, expression, onChange }) => {
         {...suggestableProps}
         {...stateProps}
       />
-    </>
+    </SpaceVertical>
   );
 };

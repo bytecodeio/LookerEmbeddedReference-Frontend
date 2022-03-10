@@ -2,7 +2,7 @@ export const sampleQuery =
     {
       model: 'data_block_acs_bigquery',
       view: 'acs_census_data',
-      fields: ['blockgroup.total_pop', 'state'],
+      fields: ['blockgroup.total_pop', 'state.state_name'],
       sorts: ['blockgroup.total_pop desc'],
       limit: '500',
       filters: {
@@ -58,6 +58,6 @@ export const sampleQuery =
         map_longitude: -101.78489685058595,
         map_zoom: 4
       },
-      dynamic_fields: '[{"category":"dimension","expression":"${state.state}","label":"State","value_format":null,"value_format_name":"","dimension":"state","_kind_hint":"dimension","_type_hint":"string"}]',
+      dynamic_fields: '[{"category":"dimension","expression":"${state.state_name}","label":"State","value_format":null,"value_format_name":"","dimension":"state","_kind_hint":"dimension","_type_hint":"string"}]',
       has_table_calculations: false
     }

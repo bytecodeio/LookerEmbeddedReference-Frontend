@@ -64,6 +64,7 @@ const EmbedDashboardLayout = () => {
 
   const updateDashboardColors = (color) => {
     const newOptions = { ...dashboardOptions };
+    console.log("new options",newOptions);
     if (color === "Blue") {
       // Loops through the bluePallete variable and updates the vis_config for each element
       bluePallette.forEach((b) => {
@@ -81,6 +82,7 @@ const EmbedDashboardLayout = () => {
         const keys = Object.keys(b.vis_config);
         keys.forEach((k) => {
           const value = b.vis_config[k];
+          console.log(b.id)
           newOptions.elements[b.id].vis_config[k] = value;
         });
       });

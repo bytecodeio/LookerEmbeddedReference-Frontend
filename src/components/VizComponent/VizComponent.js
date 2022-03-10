@@ -27,8 +27,11 @@ const EmbedComponent = (props) => {
   // This works well on any looker instance with the necessary lookML model (from the census block).
   // If you have a static query ID, you can use that instead of doing this extra step.
   useEffect(() => {
-    sdk.ok(sdk.create_query(JSON.stringify(sampleQuery), 'id'))
-      .then(res => updateQueryId(res.id))
+    sdk.ok(sdk.create_query(JSON.stringify(sampleQuery)))
+      .then(res => {
+        console.log(res);
+        updateQueryId(res.id)}
+        )
     // The second argument to the effect is an array of elements to 'watch'. 
     // An empty array like this makes the effect execute only once.
   }, [])

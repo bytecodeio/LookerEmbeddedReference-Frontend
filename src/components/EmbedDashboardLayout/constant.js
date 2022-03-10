@@ -192,23 +192,25 @@ export const bluePallette = [
 
 export const defaultPallette = [
   {
-    id: "68de526333bf14aff72cca35d17c2157",
+    id: "ab158b5edf21673cf2ce22f9f5fc33f0",
     vis_config: {
       map_value_colors: [],
     },
   },
   {
-    id: "6dea5eaa44a41c49dff3671b90779174",
-    vis_config: {},
+    id: "9a25e5117861811d218574501b928d08",
+    vis_config: {
+      custom_color:""
+    },
   },
   {
-    id: "92f9b48cec1a46b025e4a04d96d7a2f3",
+    id: "ebd76278739d31315c13830811819f8a",
     vis_config: {
       series_colors: {},
     },
   },
   {
-    id: "4c4c2ddcc7a34a8798da46341f13d61f",
+    id: "ab6f1f15fc742936f24af78decbd5455",
     vis_config: {
       series_colors: {
         "state.state_median_income": "#E57947",
@@ -216,30 +218,25 @@ export const defaultPallette = [
     },
   },
   {
-    id: "92bfc3c762bcea17abf1030173d64bb6",
+    id: "706a0bdd8337601d7b80280ee230776e",
     vis_config: {
-      series_colors: {
-        "state.state_median_rent": "#E57947",
-      },
       map_value_colors: [],
     },
   },
   {
-    id: "80bc0788621dff5fbee3993a2667d456",
-    vis_config: {
-      series_colors: {
-        "state.state_median_rent": "#E57947",
-      },
-    },
-  },
-  {
-    id: "78a7416ad175bf50857d3e9de55f0610",
+    id: "41364e74cdb03c2032cbc3b62920febf",
     vis_config: {
       series_colors: {},
     },
   },
   {
-    id: "71033d571917797d45927d87b12ac354",
+    id: "f6c7c27e725dde95253579346d066559",
+    vis_config: {
+      series_colors: {},
+    },
+  },
+  {
+    id: "ba563b0321362ca45873a5b1ad9f3ef0",
     vis_config: {
       series_colors: {
         "blockgroup.employed_pop": "#FFD95F",
@@ -248,16 +245,13 @@ export const defaultPallette = [
     },
   },
   {
-    id: "730e892bb4f142542673492851b6c8cd",
+    id: "d3db31621cb046736c7a37ebd46fb312",
     vis_config: {
-      series_colors: {
-        "blockgroup.employed_pop": "#FFD95F",
-        "blockgroup.unemployed_pop": "#E57947",
-      },
+      map_value_colors: [],
     },
   },
   {
-    id: "892494557fbcfdcbc0aa1c4aeeb753b3",
+    id: "706a0bdd8337601d7b80280ee230776e",
     vis_config: {
       series_colors: {
         "state.state_percent_income_spent_on_rent": "#E57947",
@@ -266,19 +260,19 @@ export const defaultPallette = [
     },
   },
   {
-    id: "a07c95e32a2b16dd854252022f4b4400",
+    id: "1e129b695870a7212f35b9c4eb2fe7c7",
     vis_config: {
       map_value_colors: [],
     },
   },
   {
-    id: "e502982721706a690da51073e80f278d",
+    id: "42e1631e732bd16c5f647511f986d6b6",
     vis_config: {
       map_value_colors: [],
     },
   },
   {
-    id: "93d6ab1af0f91075ae43f3ed8e20d125",
+    id: "74385e207fdf4e7b12c9036719ac762b",
     vis_config: {
       map_value_colors: [],
     },

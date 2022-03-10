@@ -11,6 +11,8 @@ import { LoadingSpinner } from '../common/LoadingSpinner'
    * First initialized the embed sdk using the endpoint in /backend/routes/api.js
    * Gets explore with ID, can be found in the url by viewing the explore via your looker instance   */
 
+  
+
 
 const EmbedExplore = () => {
   const [loading, setLoading] = React.useState(true)

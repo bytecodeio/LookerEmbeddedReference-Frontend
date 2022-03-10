@@ -18,6 +18,7 @@ import {
 
 const EmbedDashboardWFilters = () => {
   const [loading, setLoading] = React.useState(true);
+  const [dashboard, setDashboard] = React.useState();
 
   // State for all the available filters for the embedded dashboard
   const [dashboardFilters, setDashboardFilters] = React.useState();
@@ -41,11 +42,19 @@ const EmbedDashboardWFilters = () => {
 
   // Set the new selected filter values in state, when selected using the components outside the dashboard
   const handleFilterChange = (newFilterValue, filterName) => {
-    setFilterValues((prevFilterValues) => ({
-      ...prevFilterValues,
-      [filterName]: newFilterValue,
-    }));
+    // Using the dashboard state, we are sending a message to the iframe to update the filters with the new values
+    dashboard.send("dashboard:filters:update", { filters: {
+      [filterName] : newFilterValue
+    }})
+    // The "dashboard:run" message has to be sent for the filter change to take effect
+    dashboard.send("dashboard:run");
   };
+
+  // Set the state of the dashboard so we can update filters and run
+  const handleDashboardLoaded = (dashboard) => {
+    setDashboard(dashboard);
+    setLoading(false)
+  }
 
   /*
    Step 1 Initialization of the EmbedSDK happens when the user first access the application
@@ -66,18 +75,17 @@ const EmbedDashboardWFilters = () => {
       )
         // adds the iframe to the DOM as a child of a specific element
         .appendTo(el)
-        .withFilters(filterValues)
         // this line performs the call to the auth service to get the iframe's src='' url, places it in the iframe and the client performs the request to Looker
         .build()
         // this establishes event communication between the iframe and parent page
         .connect()
-        .then(() => setLoading(false))
+        .then(handleDashboardLoaded)
         // catch various errors which can occur in the process (note: does not catch 404 on content)
         .catch((error) => {
           console.error("An unexpected error occurred", error);
         });
     },
-    [filterValues]
+    []
   );
 
   return (

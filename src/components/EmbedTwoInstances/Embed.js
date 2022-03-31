@@ -20,7 +20,7 @@ const Embed = () => {
       )
     LookerEmbedSDK.createDashboardWithId(20)
     .appendTo(el)
-    .on('dashboard:loaded',(e)=>{alert('Successfully Loaded!')})
+    .on('dashboard:loaded',(e)=>{console.log('LookerEmbedSDK.createDashboardWithId()::Successfully Loaded!');})
     .build()
     .connect()
     .catch((error) => {
@@ -45,7 +45,7 @@ const makeDashboard2 = useCallback((el) => {
     )
   LookerEmbedSDK2.createDashboardWithId(1)
   .appendTo(el)
-  .on('dashboard:loaded',(e)=>{alert('Successfully Loaded!')})
+  .on('dashboard:loaded',(e)=>{console.log('LookerEmbedSDK2.createDashboardWithId()::Successfully Loaded!');})
   .build()
   .connect()
   .catch((error) => {

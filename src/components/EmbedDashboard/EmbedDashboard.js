@@ -31,7 +31,7 @@ const EmbedDashboard = () => {
       .appendTo(el)
       // the .on() method allows us to listen for and respond to events inside the iframe. See here for a list of events: https://docs.looker.com/reference/embedding/embed-javascript-events
       .on("dashboard:loaded", (e) => {
-        alert("Successfully Loaded!");
+        console.log("LookerEmbedSDK.createDashboardWithId()::Successfully Loaded!");
       })
       // this line performs the call to the auth service to get the iframe's src='' url, places it in the iframe and the client performs the request to Looker
       .build()

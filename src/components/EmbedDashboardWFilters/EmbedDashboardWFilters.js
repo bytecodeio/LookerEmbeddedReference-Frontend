@@ -88,12 +88,12 @@ const EmbedDashboardWFilters = () => {
   }, []);
 
   return (
-    <Space>
+    <Space height="calc(100% - 45px)">
       <div className={"embed-dashboard-main"}>
         <PageTitle text={"Embedded Dashboard With Filters"} />
         <LoadingSpinner loading={loading} />
         <ComponentsProvider resources={i18nResources}>
-          <Space m="u3" align="end">
+          <Space m="u3" align="end" width="auto">
             {dashboardFilters?.map((filter) => {
               return (
                 <DashFilters
@@ -116,7 +116,7 @@ const EmbedDashboardWFilters = () => {
 // A little bit of style here for heights and widths.
 const Dashboard = styled.div`
   width: 100%;
-  height: 80vh;
+  height: calc(100% - 110px);
   & > iframe {
     width: 100%;
     height: 100%;

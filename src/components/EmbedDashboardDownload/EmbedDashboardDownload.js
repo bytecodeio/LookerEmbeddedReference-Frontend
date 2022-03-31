@@ -97,7 +97,7 @@ const EmbedDashboardDownload = () => {
   }, []);
 
   return (
-    <>
+    <div height="calc(100% - 45px)">
       <PageTitle text={"Dashboard Download"} />
       <Space>
         {/* Create a button that initializes the function that downloads the Dashboard */}
@@ -112,13 +112,13 @@ const EmbedDashboardDownload = () => {
       <LoadingSpinner loading={loading} />
       {/* Step 0 - we have a simple container, which performs a callback to our makeDashboard function */}
       <Dashboard ref={makeDashboard}></Dashboard>
-    </>
+    </div>
   );
 };
 
 const Dashboard = styled.div`
   width: 100%;
-  height: 80vh;
+  height: calc(100% - 111px);
   & > iframe {
     width: 100%;
     height: 100%;

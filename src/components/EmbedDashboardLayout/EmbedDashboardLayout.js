@@ -10,10 +10,10 @@ import { ButtonItem, ButtonToggle } from "@looker/components";
 // Additional js file that holds static values that will be used in this component
 import { newLayoutComponents, bluePallette, defaultPallette } from "./constant";
 import { PageTitle } from "../common/PageTitle";
-import { LoadingSpinner } from '../common/LoadingSpinner'
+import { LoadingSpinner } from "../common/LoadingSpinner";
 
 const EmbedDashboardLayout = () => {
-  const [loading, setLoading] = React.useState(true)
+  const [loading, setLoading] = React.useState(true);
   const [dashboard, setDashboard] = React.useState();
   const [dashboardOptions, setDashboardOptions] = React.useState();
   const [originalLayout, setOriginalLayout] = React.useState();
@@ -32,7 +32,7 @@ const EmbedDashboardLayout = () => {
       setOriginalLayout(
         event.dashboard.options.layouts[0].dashboard_layout_components
       );
-      console.log(event.dashboard.options)
+      console.log(event.dashboard.options);
     }
     // Sets dashboard options for everytime the "dashboard:run:complete" event is triggered
     setDashboardOptions(event.dashboard.options);
@@ -41,7 +41,7 @@ const EmbedDashboardLayout = () => {
   // Sets the dashboard state
   const setupDashboard = (dashboard) => {
     setDashboard(dashboard);
-    setLoading(false)
+    setLoading(false);
   };
 
   // Function that hides the elements that have map visualizations in the dashboard layout
@@ -64,7 +64,7 @@ const EmbedDashboardLayout = () => {
 
   const updateDashboardColors = (color) => {
     const newOptions = { ...dashboardOptions };
-    console.log("new options",newOptions);
+    console.log("new options", newOptions);
     if (color === "Blue") {
       // Loops through the bluePallete variable and updates the vis_config for each element
       bluePallette.forEach((b) => {
@@ -82,7 +82,7 @@ const EmbedDashboardLayout = () => {
         const keys = Object.keys(b.vis_config);
         keys.forEach((k) => {
           const value = b.vis_config[k];
-          console.log(b.id)
+          console.log(b.id);
           newOptions.elements[b.id].vis_config[k] = value;
         });
       });
@@ -124,7 +124,7 @@ const EmbedDashboardLayout = () => {
   }, []);
 
   return (
-    <>
+    <div height="calc(100% - 45px)">
       <PageTitle text={"Dashboard Layout"} />
       {/* Elements that contain the toggles for the Layouts and the vis_config color changes*/}
       <ToggleArea>
@@ -146,10 +146,10 @@ const EmbedDashboardLayout = () => {
           </ButtonItem>
         </ButtonToggle>
       </ToggleArea>
-      <LoadingSpinner loading={loading}/>
+      <LoadingSpinner loading={loading} />
       {/* Step 0 - we have a simple container, which performs a callback to our makeDashboard function */}
       <Dashboard ref={makeDashboard}></Dashboard>
-    </>
+    </div>
   );
 };
 
@@ -166,7 +166,7 @@ const ToggleArea = styled.div`
 
 const Dashboard = styled.div`
   width: 100%;
-  height: 75vh;
+  height: calc(100% - 131px);
   & > iframe {
     width: 100%;
     height: 100%;

@@ -32,7 +32,7 @@ const CodePanel = styled.div`
   background-color: white;
   height: 45px;
   z-index: 999;
-  width: 84vw;
+  width: calc(100% - 15px);
 `;
 
 const Button = styled.button`

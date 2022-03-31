@@ -56,7 +56,7 @@ const EmbedQuery = () => {
   });
 
   return (
-    <Space>
+    <Space height="calc(100% - 45px)">
       <div className={"embed-dashboard-main"}>
         <PageTitle text={"Embedded Query"} />
         <LoadingSpinner loading={loading} />
@@ -70,7 +70,7 @@ const EmbedQuery = () => {
 // A little bit of style here for heights and widths.
 const Query = styled.div`
   width: 100%;
-  height: 80vh;
+  height: calc(100% - 30px);
   & > iframe {
     width: 100%;
     height: 100%;

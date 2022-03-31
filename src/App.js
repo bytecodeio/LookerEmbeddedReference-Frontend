@@ -106,7 +106,6 @@ const routes = {
 
 function App() {
   // Update the page height to have the app fit in viewport without scrolling
-  document.querySelector(".fullpage").style.height = "98vh";
 
   const [menuToggle, setMenuToggle] = React.useState(true);
   // This code adds a Components Provider, which allows Looker components to be easily used later
@@ -123,7 +122,7 @@ function App() {
     <ComponentsProvider>
       <Router>
         <TopBanner setMenuToggle={setMenuToggle} menuToggle={menuToggle} />
-        <Space>
+        <Space height="calc(100% - 80px)">
           <NavigationMenu menuToggle={menuToggle} routes={routes} />
           <Routes>
             <Route

@@ -42,7 +42,10 @@ const EmbedExplore = () => {
   }, []);
   return (
     <>
-      <div className="stuff" style={{ width: "100%", height: "100%" }}>
+      <div
+        className="stuff"
+        style={{ width: "100%", height: "calc(100% - 45px)" }}
+      >
         <PageTitle text={"Embedded Explore"} />
         <LoadingSpinner loading={loading} />
         {/* Step 0 we have a simple container, which performs a callback to our createExplore function */}
@@ -54,7 +57,7 @@ const EmbedExplore = () => {
 
 const Explore = styled.div`
   width: 100%;
-  height: 80vh;
+  height: calc(100% - 30px);
   & > iframe {
     width: 100%;
     height: 100%;

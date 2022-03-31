@@ -136,9 +136,9 @@ const EmbedDashboardEvents = () => {
   }, []);
 
   return (
-    <Space>
+    <Space height="calc(100% - 45px)">
       <div className={"embed-dashboard-main"}>
-        <SpaceVertical>
+        <SpaceVertical height="100%">
           <PageTitle text={"Embedded Dashboard with Javascript Events"} />
           <DevMessage>
             View JavaScript events <em>from</em> the iframe logged in the{" "}

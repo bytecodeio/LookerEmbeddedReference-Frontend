@@ -45,7 +45,7 @@ const EmbedDashboard = () => {
   }, []);
 
   return (
-    <Space>
+    <Space height="calc(100% - 45px)">
       <div className={"embed-dashboard-main"}>
         <PageTitle text={"Embedded Dashboard"} />
         <LoadingSpinner loading={loading} />
@@ -59,7 +59,7 @@ const EmbedDashboard = () => {
 // A little bit of style here for heights and widths.
 const Dashboard = styled.div`
   width: 100%;
-  height: 80vh;
+  height: calc(100% - 30px);
   & > iframe {
     width: 100%;
     height: 100%;

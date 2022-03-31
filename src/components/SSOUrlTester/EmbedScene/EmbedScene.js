@@ -47,16 +47,14 @@ export const EmbedScene = () => {
   const [embedUrl, setEmbedUrl] = useState("");
 
   return (
-    <Layout hasAside>
-      <Aside width="20rem">
-        <Box bg="background" padding="small" py="xlarge">
-          <EmbedForm
-            authRequest={authRequest}
-            setAuthRequest={setAuthRequest}
-            setEmbedUrl={setEmbedUrl}
-          />
-        </Box>
-      </Aside>
+    <Box display="flex">
+      <Box bg="background" padding="small" py="xlarge" width="25rem">
+        <EmbedForm
+          authRequest={authRequest}
+          setAuthRequest={setAuthRequest}
+          setEmbedUrl={setEmbedUrl}
+        />
+      </Box>
       <Box
         borderLeft="1px solid grey"
         marginLeft="medium"
@@ -78,6 +76,6 @@ export const EmbedScene = () => {
           )}
         </Box>
       </Box>
-    </Layout>
+    </Box>
   );
 };

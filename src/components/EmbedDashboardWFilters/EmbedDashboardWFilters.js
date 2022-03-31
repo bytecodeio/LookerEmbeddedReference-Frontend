@@ -43,9 +43,11 @@ const EmbedDashboardWFilters = () => {
   // Set the new selected filter values in state, when selected using the components outside the dashboard
   const handleFilterChange = (newFilterValue, filterName) => {
     // Using the dashboard state, we are sending a message to the iframe to update the filters with the new values
-    dashboard.send("dashboard:filters:update", { filters: {
-      [filterName] : newFilterValue
-    }})
+    dashboard.send("dashboard:filters:update", {
+      filters: {
+        [filterName]: newFilterValue,
+      },
+    });
     // The "dashboard:run" message has to be sent for the filter change to take effect
     dashboard.send("dashboard:run");
   };
@@ -53,40 +55,37 @@ const EmbedDashboardWFilters = () => {
   // Set the state of the dashboard so we can update filters and run
   const handleDashboardLoaded = (dashboard) => {
     setDashboard(dashboard);
-    setLoading(false)
-  }
+    setLoading(false);
+  };
 
   /*
    Step 1 Initialization of the EmbedSDK happens when the user first access the application
    See App.js for reference
   */
 
-  const makeDashboard = useCallback(
-    (el) => {
-      if (!el) {
-        return;
-      }
-      el.innerHTML = "";
-      /*
+  const makeDashboard = useCallback((el) => {
+    if (!el) {
+      return;
+    }
+    el.innerHTML = "";
+    /*
       Step 2 Create your dashboard (or other piece of embedded content) through a simple set of chained methods
     */
-      LookerEmbedSDK.createDashboardWithId(
-        "data_block_acs_bigquery::acs_census_overview"
-      )
-        // adds the iframe to the DOM as a child of a specific element
-        .appendTo(el)
-        // this line performs the call to the auth service to get the iframe's src='' url, places it in the iframe and the client performs the request to Looker
-        .build()
-        // this establishes event communication between the iframe and parent page
-        .connect()
-        .then(handleDashboardLoaded)
-        // catch various errors which can occur in the process (note: does not catch 404 on content)
-        .catch((error) => {
-          console.error("An unexpected error occurred", error);
-        });
-    },
-    []
-  );
+    LookerEmbedSDK.createDashboardWithId(
+      "data_block_acs_bigquery::acs_census_overview"
+    )
+      // adds the iframe to the DOM as a child of a specific element
+      .appendTo(el)
+      // this line performs the call to the auth service to get the iframe's src='' url, places it in the iframe and the client performs the request to Looker
+      .build()
+      // this establishes event communication between the iframe and parent page
+      .connect()
+      .then(handleDashboardLoaded)
+      // catch various errors which can occur in the process (note: does not catch 404 on content)
+      .catch((error) => {
+        console.error("An unexpected error occurred", error);
+      });
+  }, []);
 
   return (
     <Space>

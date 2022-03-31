@@ -24,7 +24,7 @@ import EmbedTwoIframes from "./components/EmbedTwoIframes/EmbedTwoIframes";
 import EmbedDashboardLayout from "./components/EmbedDashboardLayout/EmbedDashboardLayout";
 import EmbedDashboardDownload from "./components/EmbedDashboardDownload/EmbedDashboardDownload";
 import SSOUrlTester from "./components/SSOUrlTester/SSOUrlTester";
-import EmbedDashboardWFilters from './components/EmbedDashboardWFilters/EmbedDashboardWFilters'
+import EmbedDashboardWFilters from "./components/EmbedDashboardWFilters/EmbedDashboardWFilters";
 
 const routes = {
   title: "Embed Examples",
@@ -36,16 +36,16 @@ const routes = {
       path: "EmbedDashboard/EmbedDashboard.js",
     },
     {
-      url: '/embed-dashboard-with-filters',
-      text: 'Embedded Dashboard With Filters',
-      component: (<EmbedDashboardWFilters />),
-      path: 'EmbedDashboardWFilters/EmbedDashboardWFilters.js'
+      url: "/embed-dashboard-with-filters",
+      text: "Embedded Dashboard With Filters",
+      component: <EmbedDashboardWFilters />,
+      path: "EmbedDashboardWFilters/EmbedDashboardWFilters.js",
     },
     {
-      url: '/embed-explore',
-      text: 'Embedded Explore',
-      component: (<EmbedExplore />),
-      path: 'EmbedExplore/EmbedExplore.js'
+      url: "/embed-explore",
+      text: "Embedded Explore",
+      component: <EmbedExplore />,
+      path: "EmbedExplore/EmbedExplore.js",
     },
     {
       url: "/embed-query",
@@ -105,6 +105,9 @@ const routes = {
 };
 
 function App() {
+  // Update the page height to have the app fit in viewport without scrolling
+  document.querySelector(".fullpage").style.height = "98vh";
+
   const [menuToggle, setMenuToggle] = React.useState(true);
   // This code adds a Components Provider, which allows Looker components to be easily used later
   // It also adds a top banner, which includes navigation
